@@ -14,7 +14,7 @@ Planned content:
 - Tech stack section (a plus for an engineering student applying to tech-adjacent roles)
 - Downloadable/embedded resume PDF
 
-Layout, visual design, and exact project list are still open — grill Guillaume on these before building rather than assuming.
+Layout and content structure are settled — see the Project section below. Visual design is pending a mockup from Guillaume (see Design process below).
 
 ## Ask before you assume
 
@@ -42,4 +42,12 @@ Personal portfolio website.
 - **Domain:** default `github.io` URL. No custom domain planned.
 - **Repo state:** git initialized locally. No GitHub remote yet — connect it once Guillaume creates the repo and shares the URL.
 
-Content, layout, and design decisions are still open and will be added here (or to new files) as they're settled.
+Content, layout, and design decisions settled so far:
+
+- **Structure:** single-page scroll site. Sections in order: about → experience & education → projects (each project shows its own tech stack) → contact.
+- **Projects:** 5–6 projects, one entry each in the projects section. Guillaume already has the content ready.
+- **Visual style:** clean and minimal. Neutral colors, plenty of white space, standard sans-serif type.
+- **Resume:** PDF file is ready. Not yet added to the repo.
+- **Design process:** Guillaume is mocking up the visual design himself in the Claude Design app first. Do not build page layout or styling until he hands off that mockup. Once handed off, code to match it.
+
+Still open: the exact mockup (pending from Claude Design), final resume file placement in the repo.
