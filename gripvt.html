@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>GripVT — Guillaume Arenas</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="index.html#home" class="nav-logo" aria-label="Guillaume Arenas — Home">
+      <div class="nav-logo-badge">GA</div>
+    </a>
+    <div class="nav-links">
+      <a href="index.html#home" class="nav-link">Home</a>
+      <a href="index.html#projects" class="nav-link">Projects</a>
+      <a href="index.html#contact" class="nav-link">Contact</a>
+    </div>
+    <button class="nav-hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<div class="mobile-menu">
+  <a href="index.html#home">Home</a>
+  <a href="index.html#projects">Projects</a>
+  <a href="index.html#contact">Contact</a>
+</div>
+
+<header class="project-header">
+  <h1>GripVT</h1>
+  <p>A wearable, camera-based sensor that estimates hand grip force from how a silicone skin deforms on the forearm.</p>
+</header>
+
+<section class="gallery-section">
+  <h2>Gallery</h2>
+  <div class="gallery-wrap">
+    <div class="filmstrip" id="filmstrip">
+      <button class="gallery-item" data-index="0" aria-label="Open image fullscreen">
+        <img src="images/gripvt.png" alt="GripVT sensor">
+        <div class="gallery-caption"><span>GripVT sensor</span></div>
+      </button>
+      <button class="gallery-item" data-index="1" aria-label="Open image fullscreen">
+        <img src="images/gripvt-exploded.png" alt="Exploded view">
+        <div class="gallery-caption"><span>Exploded view</span></div>
+      </button>
+      <button class="gallery-item" data-index="2" aria-label="Open image fullscreen">
+        <img src="images/software.png" alt="Data collection software">
+        <div class="gallery-caption"><span>Data collection software</span></div>
+      </button>
+      <button class="gallery-item" data-index="3" aria-label="Open image fullscreen">
+        <img src="images/gripvt-forearm.jpg" alt="Worn on forearm">
+        <div class="gallery-caption"><span>Worn on forearm</span></div>
+      </button>
+    </div>
+    <button class="gallery-arrow left" id="filmLeft" aria-label="Scroll gallery left">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+    </button>
+    <button class="gallery-arrow right" id="filmRight" aria-label="Scroll gallery right">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+    </button>
+  </div>
+</section>
+
+<div class="detail-grid">
+
+  <aside class="sidebar">
+    <div class="sidebar-block">
+      <div class="sidebar-label">Tech Stack</div>
+      <div class="tech-tags">
+        <span class="tech-tag">Python</span>
+        <span class="tech-tag">OpenCV</span>
+        <span class="tech-tag">Scikit-Learn</span>
+      </div>
+    </div>
+    <div class="sidebar-block">
+      <div class="sidebar-label">Links</div>
+      <div class="sidebar-links">
+        <a href="https://github.com/gkuarenas/GripVT" target="_blank" rel="noopener" class="link-btn">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-4.3 1.4-4.3-2.5-6-3m12 5v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6a4.6 4.6 0 0 0-1.3-3.2 4.2 4.2 0 0 0-.1-3.2s-1.1-.3-3.5 1.3a12.3 12.3 0 0 0-6.2 0C6.5 2.8 5.4 3.1 5.4 3.1a4.2 4.2 0 0 0-.1 3.2A4.6 4.6 0 0 0 4 9.5c0 4.6 2.7 5.7 5.5 6-.6.6-.6 1.2-.5 2V21"></path></svg>
+          GitHub Repo
+        </a>
+        <button type="button" class="link-btn" id="openManuscriptModal">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v16H4z"></path><path d="M4 6l8 7 8-7"></path></svg>
+          Manuscript Available on Request
+        </button>
+      </div>
+    </div>
+  </aside>
+
+  <main class="content-main">
+
+    <section class="content-section">
+      <h2>Overview</h2>
+      <p>GripVT is a visuotactile sensing system: a soft elastomer skin with a 99-point marker grid, worn on the forearm, watched by a fixed camera that tracks marker displacement as the wearer grips. It's for researchers and clinicians in biomechanics, rehab, and sports science who need a cheap, non-invasive way to estimate grip force without rigid dynamometers or multi-channel EMG rigs. A paper on the device has been submitted to IEEE Sensors Journal.</p>
+    </section>
+
+    <section class="content-section">
+      <h2>Problem &amp; Approach</h2>
+      <div class="problem-figure">
+        <img src="images/figure-abstract.png" alt="GripVT graphical abstract: hardware, marker-displacement tracking, and the XGBoost pipeline producing grip-force estimates">
+      </div>
+      <p><b>Problem:</b>&nbsp;Grip strength is a standard clinical measure, but no non-invasive method captures the forearm deformation that produces it. Dynamometers give only one force number, EMG needs careful setup and drifts with fatigue, pressure gloves restrict motion. Visuotactile sensing solves this for object contact, but had never been tested on human skin driven by muscle, not external touch.</p>
+      <p><b>Approach:&nbsp;</b>Mold a soft marker-grid skin, mount it over the forearm, track marker displacement with a camera as the wearer grips. Feed that displacement into an ML model, calibrated per subject, to predict grip force, validated against a hand dynamometer.</p>
+    </section>
+
+    <section class="content-section">
+      <h2>Key Features</h2>
+      <div class="feature-wrap">
+        <div class="feature-figure">
+          <img src="images/Figure-4.23.png" alt="Marker detection: raw grid vs. tracked markers">
+        </div>
+        <ul>
+          <li>Kalman filter + Hungarian assignment tracking across a 99-marker grid</li>
+          <li>Custom soft elastomer sensing skin, screened for compliance and marker visibility</li>
+          <li>Per-subject calibration mapping skin deformation to grip force, no load cells or EMG</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="content-section">
+      <h2>Results &amp; Outcomes</h2>
+      <ul>
+        <li>Grip-force estimates accurate to within ~6% of max effort, matching benchmarks set by published optical force-sensing systems</li>
+        <li>Validated end-to-end on real participant sessions with synchronized ground-truth force data</li>
+      </ul>
+    </section>
+
+  </main>
+</div>
+
+<footer class="site-footer">
+  <span>© 2026 Guillaume Arenas</span>
+</footer>
+
+<!-- Manuscript request modal -->
+<div class="modal-backdrop" id="modalBackdrop">
+  <div class="modal" id="modal">
+    <button class="modal-close" id="modalClose" aria-label="Close" type="button">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+    </button>
+    <h3>Request the Manuscript</h3>
+    <p class="modal-desc">Send your details and I'll get a message right away — no email needed.</p>
+
+    <form id="manuscriptForm">
+      <div class="form-field">
+        <span>Name</span>
+        <input type="text" id="mName" placeholder="Jane Doe" required>
+      </div>
+      <div class="form-field">
+        <span>Affiliation / Institution</span>
+        <input type="text" id="mAffiliation" placeholder="University or Company" required>
+      </div>
+      <div class="form-field">
+        <span>Email</span>
+        <input type="email" id="mEmail" placeholder="jane@university.edu" required>
+      </div>
+      <div class="form-field">
+        <span>Purpose <em>(optional)</em></span>
+        <textarea id="mPurpose" placeholder="What would you use it for?" rows="3"></textarea>
+      </div>
+      <input type="text" id="mHoneypot" name="website" class="honeypot-field" tabindex="-1" autocomplete="off" aria-hidden="true">
+
+      <div class="banner banner-success" id="bannerSuccess">✓ Sent — thanks, I'll get back to you soon.</div>
+      <div class="banner banner-error" id="bannerError"></div>
+      <p class="hint-text" id="hintText">Fill in Name, Affiliation and Email to send.</p>
+
+      <div class="modal-actions">
+        <button type="button" class="btn-copy" id="copyDetails">Copy Details</button>
+        <button type="submit" class="btn-send" id="sendRequest" disabled>Send Request</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- Lightbox -->
+<div class="lightbox-backdrop" id="lightboxBackdrop">
+  <button class="lightbox-icon-btn lightbox-close" id="lightboxClose" aria-label="Close">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+  </button>
+  <button class="lightbox-icon-btn lightbox-prev" id="lightboxPrev" aria-label="Previous image">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+  </button>
+  <button class="lightbox-icon-btn lightbox-next" id="lightboxNext" aria-label="Next image">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+  </button>
+  <div class="lightbox-frame" id="lightboxFrame">
+    <img id="lightboxImg" src="" alt="">
+  </div>
+</div>
+
+<script src="js/nav.js"></script>
+<script src="js/config.js"></script>
+<script src="js/gallery-lightbox.js"></script>
+<script src="js/gripvt.js"></script>
+</body>
+</html>

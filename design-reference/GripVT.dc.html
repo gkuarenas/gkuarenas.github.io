@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+
+<helmet>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet">
+  <style>
+    html{scroll-behavior:smooth}
+    body{margin:0;background:#14161A}
+    a{color:#F2F0EC}
+    a:hover{color:#F2F0EC}
+  </style>
+</helmet>
+<div style="font-family:'Manrope',system-ui,sans-serif;background:#14161A;color:#F2F0EC;min-height:100vh;overflow-x:hidden">
+
+  <nav style="{{ navStyle }}" data-screen-label="Nav">
+    <div style="max-width:1200px;margin:0 auto;padding:0 24px;height:72px;display:flex;align-items:center;justify-content:space-between">
+      <a href="Main Landing Page.dc.html#home" aria-label="Guillaume Arenas — Home" style="text-decoration:none;display:flex;align-items:center">
+        <div style="width:38px;height:38px;border-radius:50%;background:#33475B;display:flex;align-items:center;justify-content:center;color:#F2F0EC;font-weight:700;font-size:14px;font-family:'Manrope',sans-serif">GA</div>
+      </a>
+      <sc-if value="{{ isDesktop }}" hint-placeholder-val="{{ true }}">
+        <div style="display:flex;align-items:center;gap:6px">
+          <sc-for list="{{ navItems }}" as="item" hint-placeholder-count="3">
+            <a href="{{ item.href }}" style="{{ item.style }}" style-hover="background:#FFFFFF1A;color:#FFFFFF;transform:scale(1.05)">{{ item.label }}</a>
+          </sc-for>
+        </div>
+      </sc-if>
+      <sc-if value="{{ isMobile }}" hint-placeholder-val="{{ false }}">
+        <button onClick="{{ toggleMobileMenu }}" aria-label="Menu" style="background:none;border:none;cursor:pointer;padding:10px;display:flex;flex-direction:column;gap:5px;align-items:center;justify-content:center;width:40px;height:40px">
+          <div style="width:20px;height:2px;background:#F2F0EC;border-radius:1px"></div>
+          <div style="width:20px;height:2px;background:#F2F0EC;border-radius:1px"></div>
+          <div style="width:20px;height:2px;background:#F2F0EC;border-radius:1px"></div>
+        </button>
+      </sc-if>
+    </div>
+  </nav>
+
+  <sc-if value="{{ mobileMenuOpen }}" hint-placeholder-val="{{ false }}">
+    <div style="position:fixed;top:72px;left:0;right:0;bottom:0;background:#1C1F26;z-index:999;display:flex;flex-direction:column;padding:36px 28px;gap:30px">
+      <a onClick="{{ closeMobileMenu }}" href="Main Landing Page.dc.html#home" style="font-size:22px;font-weight:600;color:#F2F0EC;text-decoration:none">Home</a>
+      <a onClick="{{ closeMobileMenu }}" href="Main Landing Page.dc.html#projects" style="font-size:22px;font-weight:600;color:#F2F0EC;text-decoration:none">Projects</a>
+      <a onClick="{{ closeMobileMenu }}" href="Main Landing Page.dc.html#contact" style="font-size:22px;font-weight:600;color:#F2F0EC;text-decoration:none">Contact</a>
+    </div>
+  </sc-if>
+
+  <header style="max-width:1200px;margin:0 auto;padding:168px 24px 8px">
+    <h1 style="font-size:clamp(34px,5.5vw,54px);font-weight:700;line-height:1.08;letter-spacing:-0.02em;margin:0 0 14px;color:#F2F0EC">GripVT</h1>
+    <p style="font-size:17px;line-height:1.5;color:#C9C7C0;max-width:640px;margin:0">A wearable, camera-based sensor that estimates hand grip force from how a silicone skin deforms on the forearm.</p>
+  </header>
+
+  <sc-if value="{{ hasGallery }}" hint-placeholder-val="{{ true }}">
+    <section style="position:relative;max-width:1200px;margin:0 auto;padding:40px 24px 0">
+      <h2 style="font-size:24px;font-weight:600;letter-spacing:-0.01em;margin:0 0 16px;color:#F2F0EC">Gallery</h2>
+      <div style="position:relative">
+        <div ref="{{ filmstripRef }}" style="display:flex;gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:6px;scrollbar-width:none">
+          <sc-for list="{{ galleryImages }}" as="img" hint-placeholder-count="4">
+            <button onClick="{{ img.onOpen }}" aria-label="Open image fullscreen" style="flex:0 0 320px;aspect-ratio:4/3;scroll-snap-align:start;position:relative;border:1px solid #2C2F36;border-radius:12px;overflow:hidden;cursor:pointer;padding:0;background:none;transition:border-color .2s,transform .2s" style-hover="border-color:#F2F0EC;transform:translateY(-3px)">
+              <img src="{{ img.src }}" alt="{{ img.label }}" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover">
+              <div style="position:absolute;bottom:0;left:0;right:0;padding:10px 12px;background:linear-gradient(to top, rgba(20,22,26,0.85), transparent)">
+                <span style="font-size:12.5px;font-weight:600;color:#F2F0EC">{{ img.label }}</span>
+              </div>
+            </button>
+          </sc-for>
+        </div>
+        <button onClick="{{ scrollFilmstripLeft }}" aria-label="Scroll gallery left" style="position:absolute;top:50%;left:-18px;transform:translateY(-50%);width:40px;height:40px;border-radius:50%;background:#1C1F26;border:1px solid #2C2F36;color:#F2F0EC;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .2s" style-hover="background:#33475B">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+        </button>
+        <button onClick="{{ scrollFilmstripRight }}" aria-label="Scroll gallery right" style="position:absolute;top:50%;right:-18px;transform:translateY(-50%);width:40px;height:40px;border-radius:50%;background:#1C1F26;border:1px solid #2C2F36;color:#F2F0EC;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .2s" style-hover="background:#33475B">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+        </button>
+      </div>
+    </section>
+  </sc-if>
+
+  <div style="max-width:1200px;margin:0 auto;padding:56px 24px 100px;display:grid;grid-template-columns:{{ gridCols }};gap:{{ gridGap }}">
+
+    <aside style="{{ sidebarStyle }}">
+      <div style="margin-bottom:32px">
+        <div style="font-size:12px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:#8B8983;margin-bottom:14px">Tech Stack</div>
+        <div style="display:flex;flex-wrap:wrap;gap:8px">
+          <sc-for list="{{ techStack }}" as="tag" hint-placeholder-count="4">
+            <span style="font-size:12.5px;font-weight:500;color:#D7DEE3;background:#1C1F26;border:1px solid #2C2F36;padding:6px 12px;border-radius:999px">{{ tag }}</span>
+          </sc-for>
+        </div>
+      </div>
+      <div style="margin-bottom:32px">
+        
+        
+      </div>
+      <div style="margin-bottom:32px">
+        
+        
+      </div>
+      <div>
+        <div style="font-size:12px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:#8B8983;margin-bottom:14px">Links</div>
+        <div style="display:flex;flex-direction:column;gap:10px">
+          <a href="https://github.com/gkuarenas/GripVT" target="_blank" rel="noopener" style="display:flex;align-items:center;gap:9px;font-size:14.5px;font-weight:600;color:#14161A;background:#F2F0EC;padding:11px 16px;border-radius:8px;text-decoration:none;transition:background .2s" style-hover="background:#D8D5CF">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-4.3 1.4-4.3-2.5-6-3m12 5v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6a4.6 4.6 0 0 0-1.3-3.2 4.2 4.2 0 0 0-.1-3.2s-1.1-.3-3.5 1.3a12.3 12.3 0 0 0-6.2 0C6.5 2.8 5.4 3.1 5.4 3.1a4.2 4.2 0 0 0-.1 3.2A4.6 4.6 0 0 0 4 9.5c0 4.6 2.7 5.7 5.5 6-.6.6-.6 1.2-.5 2V21"></path></svg>
+            GitHub Repo
+          </a>
+          <button type="button" onClick="{{ openManuscriptModal }}" style="display:flex;align-items:center;gap:9px;font-size:14.5px;font-weight:600;color:#14161A;background:#F2F0EC;padding:11px 16px;border-radius:8px;border:none;cursor:pointer;font-family:inherit;text-align:left;width:100%;transition:background .2s" style-hover="background:#D8D5CF">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v16H4z"></path><path d="M4 6l8 7 8-7"></path></svg>
+            Manuscript Available on Request
+          </button>
+        </div>
+      </div>
+    </aside>
+
+    <main style="min-width:0;display:flex;flex-direction:column;gap:56px">
+
+      <section>
+        <h2 style="font-size:24px;font-weight:600;letter-spacing:-0.01em;margin:0 0 16px;color:#F2F0EC">Overview</h2>
+        <p style="font-size:16px;line-height:1.7;color:#C9C7C0;margin:0">GripVT is a visuotactile sensing system: a soft elastomer skin with a 99-point marker grid, worn on the forearm, watched by a fixed camera that tracks marker displacement as the wearer grips. It's for researchers and clinicians in biomechanics, rehab, and sports science who need a cheap, non-invasive way to estimate grip force without rigid dynamometers or multi-channel EMG rigs. A paper on the device has been submitted to IEEE Sensors Journal.</p>
+      </section>
+
+      <section>
+        <h2 style="font-size:24px;font-weight:600;letter-spacing:-0.01em;margin:0 0 16px;color:#F2F0EC">Problem &amp; Approach</h2>
+        <div style="background:#F2F0EC;border-radius:12px;padding:14px;margin-bottom:20px">
+          <img src="uploads/figure%20abstract.png" alt="GripVT graphical abstract: hardware, marker-displacement tracking, and the XGBoost pipeline producing grip-force estimates" style="width:100%;display:block;border-radius:6px">
+        </div>
+        <p style="font-size:16px;line-height:1.7;color:#C9C7C0;margin:0 0 12px"><b>Problem:</b>&nbsp;Grip strength is a standard clinical measure, but no non-invasive method captures the forearm deformation that produces it. Dynamometers give only one force number, EMG needs careful setup and drifts with fatigue, pressure gloves restrict motion. Visuotactile sensing solves this for object contact, but had never been tested on human skin driven by muscle, not external touch.</p>
+        <p style="font-size:16px;line-height:1.7;color:#C9C7C0;margin:0"><b>Approach:&nbsp;</b>Mold a soft marker-grid skin, mount it over the forearm, track marker displacement with a camera as the wearer grips. Feed that displacement into an ML model, calibrated per subject, to predict grip force, validated against a hand dynamometer.</p>
+      </section>
+
+      <section>
+        <h2 style="font-size:24px;font-weight:600;letter-spacing:-0.01em;margin:0 0 16px;color:#F2F0EC">Key Features</h2>
+        <div style="overflow:hidden">
+          <div style="float: right; width: 313px; max-width: 40%; margin: 0 0 16px 20px; background: #F2F0EC; border-radius: 10px; padding: 10px; height: 183px">
+            <img src="uploads/Figure-4.23.png" alt="Marker detection: raw grid vs. tracked markers" style="width:100%;display:block;border-radius:5px">
+          </div>
+          <ul style="margin:0;padding-left:20px;color:#C9C7C0;font-size:16px;line-height:1.8">
+            <li>Kalman filter + Hungarian assignment tracking across a 99-marker grid</li>
+            <li>Custom soft elastomer sensing skin, screened for compliance and marker visibility</li>
+            <li>Per-subject calibration mapping skin deformation to grip force, no load cells or EMG</li>
+          </ul>
+        </div>
+      </section>
+
+      <section>
+        <h2 style="font-size:24px;font-weight:600;letter-spacing:-0.01em;margin:0 0 16px;color:#F2F0EC">Results &amp; Outcomes</h2>
+        <ul style="margin:0;padding-left:20px;color:#C9C7C0;font-size:16px;line-height:1.8">
+          <li>Grip-force estimates accurate to within ~6% of max effort, matching benchmarks set by published optical force-sensing systems</li>
+          <li>Validated end-to-end on real participant sessions with synchronized ground-truth force data</li>
+        </ul>
+      </section>
+
+    </main>
+  </div>
+
+  <footer style="border-top:1px solid #2C2F36;padding:28px 24px;text-align:center">
+    <span style="font-size:13px;color:#8B8983">© 2026 Guillaume Arenas</span>
+  </footer>
+
+  <sc-if value="{{ manuscriptModalOpen }}" hint-placeholder-val="{{ false }}">
+    <div onClick="{{ closeManuscriptModalBackdrop }}" style="position:fixed;inset:0;background:rgba(10,11,13,0.7);z-index:2100;display:flex;align-items:center;justify-content:center;padding:24px">
+      <div onClick="{{ stopPropClick }}" style="background:#1C1F26;border:1px solid #2C2F36;border-radius:16px;max-width:480px;width:100%;max-height:90vh;overflow-y:auto;padding:32px;position:relative;box-shadow:0 30px 70px rgba(0,0,0,0.5)">
+        <button onClick="{{ closeManuscriptModal }}" aria-label="Close" type="button" style="position:absolute;top:16px;right:16px;width:32px;height:32px;border-radius:50%;background:none;border:1px solid #2C2F36;color:#F2F0EC;cursor:pointer;display:flex;align-items:center;justify-content:center" style-hover="background:#2C2F36">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+        </button>
+        <div style="width:44px;height:44px;border-radius:50%;background:#33475B;display:flex;align-items:center;justify-content:center;margin-bottom:16px">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2 11 13"></path><path d="M22 2 15 22l-4-9-9-4 20-7z"></path></svg>
+        </div>
+        <h3 style="font-size:20px;font-weight:700;margin:0 0 6px;color:#F2F0EC">Request the Manuscript</h3>
+        <p style="font-size:14px;line-height:1.5;color:#8B8983;margin:0 0 22px">Send your details and I'll get a message right away — no email needed.</p>
+
+        <div style="display:flex;flex-direction:column;gap:12px;margin-bottom:18px">
+          <label style="display:flex;flex-direction:column;gap:6px">
+            <span style="font-size:12px;font-weight:600;color:#8B8983;text-transform:uppercase;letter-spacing:.05em">Name</span>
+            <input value="{{ mName }}" onChange="{{ onNameChange }}" placeholder="Jane Doe" style="background:#14161A;border:1px solid #2C2F36;border-radius:8px;padding:10px 12px;color:#F2F0EC;font-size:14px;font-family:inherit;outline:none"/>
+          </label>
+          <label style="display:flex;flex-direction:column;gap:6px">
+            <span style="font-size:12px;font-weight:600;color:#8B8983;text-transform:uppercase;letter-spacing:.05em">Affiliation / Institution</span>
+            <input value="{{ mAffiliation }}" onChange="{{ onAffiliationChange }}" placeholder="University or Company" style="background:#14161A;border:1px solid #2C2F36;border-radius:8px;padding:10px 12px;color:#F2F0EC;font-size:14px;font-family:inherit;outline:none"/>
+          </label>
+          <label style="display:flex;flex-direction:column;gap:6px">
+            <span style="font-size:12px;font-weight:600;color:#8B8983;text-transform:uppercase;letter-spacing:.05em">Email</span>
+            <input type="email" value="{{ mEmail }}" onChange="{{ onEmailChange }}" placeholder="jane@university.edu" style="background:#14161A;border:1px solid #2C2F36;border-radius:8px;padding:10px 12px;color:#F2F0EC;font-size:14px;font-family:inherit;outline:none"/>
+          </label>
+          <label style="display:flex;flex-direction:column;gap:6px">
+            <span style="font-size:12px;font-weight:600;color:#8B8983;text-transform:uppercase;letter-spacing:.05em">Purpose <span style="text-transform:none;font-weight:500">(optional)</span></span>
+            <textarea value="{{ mPurpose }}" onChange="{{ onPurposeChange }}" placeholder="What would you use it for?" rows="3" style="background:#14161A;border:1px solid #2C2F36;border-radius:8px;padding:10px 12px;color:#F2F0EC;font-size:14px;font-family:inherit;outline:none;resize:vertical"></textarea>
+          </label>
+          <input value="{{ mHoneypot }}" onChange="{{ onHoneypotChange }}" name="website" type="text" tabIndex="-1" autoComplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0"/>
+        </div>
+
+        <sc-if value="{{ mStatusSent }}" hint-placeholder-val="{{ false }}">
+          <div style="background:rgba(94,196,120,0.12);border:1px solid rgba(94,196,120,0.4);color:#8FE3A3;border-radius:8px;padding:12px 14px;margin-bottom:14px;font-size:13.5px">✓ Sent — thanks, I'll get back to you soon.</div>
+        </sc-if>
+        <sc-if value="{{ mStatusError }}" hint-placeholder-val="{{ false }}">
+          <div style="background:rgba(220,90,90,0.12);border:1px solid rgba(220,90,90,0.4);color:#F0A0A0;border-radius:8px;padding:12px 14px;margin-bottom:14px;font-size:13.5px">{{ mErrorMsg }}</div>
+        </sc-if>
+        <sc-if value="{{ mShowHint }}" hint-placeholder-val="{{ false }}">
+          <p style="font-size:12.5px;color:#8B8983;margin:0 0 14px">Fill in Name, Affiliation and Email to send.</p>
+        </sc-if>
+
+        <div style="display:flex;gap:10px;flex-wrap:wrap">
+          <sc-if value="{{ mStatusError }}" hint-placeholder-val="{{ false }}">
+            <button type="button" onClick="{{ copyManuscriptDetails }}" style="{{ copyBtnStyle }}">{{ mCopyLabel }}</button>
+          </sc-if>
+          <button type="button" onClick="{{ sendManuscriptRequest }}" disabled="{{ mSendDisabled }}" style="{{ sendBtnStyle }}">{{ mSendLabel }}</button>
+        </div>
+      </div>
+    </div>
+  </sc-if>
+
+  <sc-if value="{{ lightboxActive }}" hint-placeholder-val="{{ false }}">
+    <div onClick="{{ closeLightbox }}" style="{{ backdropStyle }}">
+      <button onClick="{{ closeLightboxClick }}" aria-label="Close" style="position:fixed;top:22px;right:22px;width:44px;height:44px;border-radius:50%;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.2);color:#F2F0EC;cursor:pointer;display:flex;align-items:center;justify-content:center;z-index:2001;transition:background .2s" style-hover="background:rgba(255,255,255,0.18)">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+      </button>
+      <button onClick="{{ prevImageClick }}" aria-label="Previous image" style="position:fixed;top:50%;left:24px;transform:translateY(-50%);width:48px;height:48px;border-radius:50%;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.2);color:#F2F0EC;cursor:pointer;display:flex;align-items:center;justify-content:center;z-index:2001;transition:background .2s" style-hover="background:rgba(255,255,255,0.18)">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+      </button>
+      <button onClick="{{ nextImageClick }}" aria-label="Next image" style="position:fixed;top:50%;right:24px;transform:translateY(-50%);width:48px;height:48px;border-radius:50%;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.2);color:#F2F0EC;cursor:pointer;display:flex;align-items:center;justify-content:center;z-index:2001;transition:background .2s" style-hover="background:rgba(255,255,255,0.18)">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+      </button>
+      <div onClick="{{ stopPropClick }}" style="{{ lightboxImgStyle }}">
+        <img src="{{ lightboxSrc }}" alt="{{ lightboxLabel }}" style="position:absolute;inset:0;width:100%;height:100%;object-fit:contain;background:#EDEBE6">
+      </div>
+    </div>
+  </sc-if>
+
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1440,&quot;height&quot;:1400},&quot;hasGallery&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Behavior&quot;}}">
+class Component extends DCLogic {
+  // TODO: replace with your deployed Cloudflare Worker URL (see SETUP.md)
+  telegramWorkerUrl = 'https://REPLACE-WITH-YOUR-WORKER.workers.dev';
+
+  state = {
+    mobileMenuOpen: false,
+    isMobile: typeof window !== 'undefined' && window.innerWidth <= 760,
+    lightbox: null, // {index, phase: 'enter'|'active'|'exit', originRect}
+    manuscriptModalOpen: false,
+    mName: '', mAffiliation: '', mEmail: '', mPurpose: '', mHoneypot: '',
+    mStatus: 'idle', // idle | sending | sent | error
+    mErrorMsg: '', mCopied: false
+  };
+
+  componentDidMount() {
+    this._onResize = () => {
+      const m = window.innerWidth <= 760;
+      if (m !== this.state.isMobile) this.setState({ isMobile: m, mobileMenuOpen: false });
+      if (this.state.lightbox) this.forceUpdate();
+    };
+    window.addEventListener('resize', this._onResize);
+    this._onKey = (e) => {
+      if (e.key === 'Escape' && this.state.manuscriptModalOpen) { this.closeManuscriptModalNow(); return; }
+      if (!this.state.lightbox) return;
+      if (e.key === 'Escape') this.closeLightbox();
+      if (e.key === 'ArrowLeft') this.stepImage(-1);
+      if (e.key === 'ArrowRight') this.stepImage(1);
+    };
+    window.addEventListener('keydown', this._onKey);
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('resize', this._onResize);
+    window.removeEventListener('keydown', this._onKey);
+    if (this._closeTimer) clearTimeout(this._closeTimer);
+  }
+
+  makeRef(id) {
+    return (el) => { if (!this.nodes) this.nodes = {}; if (el) this.nodes[id] = el; };
+  }
+
+  targetRect() {
+    const vw = window.innerWidth, vh = window.innerHeight;
+    const maxW = Math.min(vw * 0.86, 1100);
+    const maxH = Math.min(vh * 0.82, 800);
+    let w = maxW, h = w * 3 / 4;
+    if (h > maxH) { h = maxH; w = h * 4 / 3; }
+    return { top: (vh - h) / 2, left: (vw - w) / 2, width: w, height: h };
+  }
+
+  openLightbox(index, e) {
+    const rect = e.currentTarget.getBoundingClientRect();
+    const origin = { top: rect.top, left: rect.left, width: rect.width, height: rect.height };
+    this.setState({ lightbox: { index, phase: 'enter', originRect: origin } });
+    requestAnimationFrame(() => requestAnimationFrame(() => {
+      this.setState(s => s.lightbox ? { lightbox: { ...s.lightbox, phase: 'active' } } : null);
+    }));
+  }
+
+  closeLightbox() {
+    this.setState(s => s.lightbox ? { lightbox: { ...s.lightbox, phase: 'exit' } } : null);
+    setTimeout(() => this.setState({ lightbox: null }), 320);
+  }
+
+  stepImage(dir) {
+    this.setState(s => {
+      if (!s.lightbox) return null;
+      const total = 4;
+      const next = (s.lightbox.index + dir + total) % total;
+      return { lightbox: { ...s.lightbox, index: next } };
+    });
+  }
+
+  closeManuscriptModalNow() {
+    if (this._closeTimer) clearTimeout(this._closeTimer);
+    this.setState({ manuscriptModalOpen: false, mCopied: false, mStatus: 'idle', mErrorMsg: '' });
+  }
+
+  isManuscriptValid() {
+    const { mName, mAffiliation, mEmail } = this.state;
+    return !!(mName.trim() && mAffiliation.trim() && /\S+@\S+\.\S+/.test(mEmail.trim()));
+  }
+
+  sendManuscriptRequest() {
+    if (!this.isManuscriptValid() || this.state.mStatus === 'sending' || this.state.mStatus === 'sent') return;
+    this.setState({ mStatus: 'sending', mErrorMsg: '' });
+    fetch(this.telegramWorkerUrl, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        name: this.state.mName.trim(), affiliation: this.state.mAffiliation.trim(),
+        email: this.state.mEmail.trim(), purpose: this.state.mPurpose.trim(),
+        website: this.state.mHoneypot
+      })
+    }).then(res => res.json().catch(() => ({ ok: false })).then(data => {
+      if (res.ok && data.ok) {
+        this.setState({ mStatus: 'sent' });
+        this._closeTimer = setTimeout(() => {
+          this.setState({ manuscriptModalOpen: false, mStatus: 'idle', mName: '', mAffiliation: '', mEmail: '', mPurpose: '', mHoneypot: '' });
+        }, 1800);
+      } else {
+        this.setState({ mStatus: 'error', mErrorMsg: "Couldn't send — the relay may not be set up yet." });
+      }
+    })).catch(() => {
+      this.setState({ mStatus: 'error', mErrorMsg: "Couldn't reach the server. Check your connection and try again." });
+    });
+  }
+
+  copyManuscriptDetails() {
+    const text = `Manuscript Request — GripVT\nName: ${this.state.mName}\nAffiliation: ${this.state.mAffiliation}\nEmail: ${this.state.mEmail}\nPurpose: ${this.state.mPurpose || '(none)'}`;
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(text).then(() => {
+        this.setState({ mCopied: true });
+        setTimeout(() => this.setState({ mCopied: false }), 1800);
+      });
+    }
+  }
+
+  renderVals() {
+    const isMobile = this.state.isMobile;
+    const navDefs = [
+      { label: 'Home', href: 'Main Landing Page.dc.html#home' },
+      { label: 'Projects', href: 'Main Landing Page.dc.html#projects' },
+      { label: 'Contact', href: 'Main Landing Page.dc.html#contact' }
+    ];
+    const navItems = navDefs.map(n => ({
+      label: n.label, href: n.href,
+      style: { fontSize: '15px', fontWeight: 500, color: '#D7DEE3', textDecoration: 'none', padding: '9px 16px', borderRadius: '8px', background: 'transparent', transition: 'background .2s, color .2s, transform .2s' }
+    }));
+
+    const galleryDefs = [
+      { src: 'uploads/gripvt.png', label: 'GripVT sensor' },
+      { src: 'uploads/gripvt-exploded.png', label: 'Exploded view' },
+      { src: 'uploads/software.png', label: 'Data collection software' },
+      { src: 'uploads/gripvt-forearm.jpg', label: 'Worn on forearm' }
+    ];
+    const galleryImages = galleryDefs.map((d, i) => ({
+      src: d.src, label: d.label,
+      onOpen: (e) => this.openLightbox(i, e)
+    }));
+
+    const lb = this.state.lightbox;
+    let backdropStyle = null, lightboxImgStyle = null, lightboxLabel = '', lightboxSrc = '';
+    if (lb) {
+      const active = lb.phase === 'active';
+      backdropStyle = {
+        position: 'fixed', inset: 0, zIndex: 2000,
+        background: 'rgba(10,11,13,0.94)',
+        opacity: active ? 1 : 0,
+        transition: 'opacity .32s ease'
+      };
+      const r = (lb.phase === 'active') ? this.targetRect() : lb.originRect;
+      lightboxImgStyle = {
+        position: 'fixed', top: r.top + 'px', left: r.left + 'px', width: r.width + 'px', height: r.height + 'px',
+        borderRadius: active ? '10px' : '12px', overflow: 'hidden',
+        boxShadow: active ? '0 30px 70px rgba(0,0,0,0.55)' : 'none',
+        transition: 'top .36s cubic-bezier(.2,.8,.2,1), left .36s cubic-bezier(.2,.8,.2,1), width .36s cubic-bezier(.2,.8,.2,1), height .36s cubic-bezier(.2,.8,.2,1), border-radius .36s'
+      };
+      lightboxLabel = galleryDefs[lb.index] ? galleryDefs[lb.index].label : '';
+      lightboxSrc = galleryDefs[lb.index] ? galleryDefs[lb.index].src : '';
+    }
+
+    const mValid = this.isManuscriptValid();
+    const mStatus = this.state.mStatus;
+    const sendDisabled = !mValid || mStatus === 'sending' || mStatus === 'sent';
+    const disabledBtnStyle = { opacity: 0.45, cursor: 'not-allowed' };
+    const copyBtnStyle = { flex: '1 1 140px', fontSize: '14px', fontWeight: 600, padding: '11px 16px', borderRadius: '8px', border: '1px solid #2C2F36', background: 'transparent', color: '#F2F0EC', cursor: 'pointer', fontFamily: 'inherit', transition: 'background .2s' };
+    const sendBtnStyle = Object.assign({ flex: '1 1 160px', fontSize: '14px', fontWeight: 600, padding: '11px 16px', borderRadius: '8px', border: 'none', background: '#F2F0EC', color: '#14161A', cursor: 'pointer', fontFamily: 'inherit', transition: 'background .2s' }, sendDisabled ? disabledBtnStyle : {});
+    const sendLabel = mStatus === 'sending' ? 'Sending…' : mStatus === 'sent' ? 'Sent ✓' : mStatus === 'error' ? 'Try Again' : 'Send Request';
+
+    return {
+      isDesktop: !isMobile,
+      isMobile: isMobile,
+      mobileMenuOpen: this.state.mobileMenuOpen,
+      toggleMobileMenu: () => this.setState(s => ({ mobileMenuOpen: !s.mobileMenuOpen })),
+      closeMobileMenu: () => this.setState({ mobileMenuOpen: false }),
+      navStyle: { position: 'fixed', top: 0, left: 0, width: '100%', zIndex: 1000, background: 'rgba(20,22,26,0.55)', backdropFilter: 'blur(10px)', borderBottom: '1px solid rgba(255,255,255,0.06)' },
+      navItems: navItems,
+      gridCols: isMobile ? '1fr' : '260px 1fr',
+      gridGap: isMobile ? '40px' : '64px',
+      sidebarStyle: isMobile ? {} : { position: 'sticky', top: '104px', alignSelf: 'start' },
+      techStack: ['Python', 'OpenCV', 'Scikit-Learn'],
+      hasGallery: (this.props && this.props.hasGallery) !== false,
+      galleryImages: galleryImages,
+      filmstripRef: this.makeRef('filmstrip'),
+      scrollFilmstripLeft: () => { const el = this.nodes && this.nodes.filmstrip; if (el) el.scrollBy({ left: -320, behavior: 'smooth' }); },
+      scrollFilmstripRight: () => { const el = this.nodes && this.nodes.filmstrip; if (el) el.scrollBy({ left: 320, behavior: 'smooth' }); },
+      lightboxActive: !!lb,
+      backdropStyle: backdropStyle,
+      lightboxImgStyle: lightboxImgStyle,
+      lightboxLabel: lightboxLabel,
+      lightboxSrc: lightboxSrc,
+      closeLightbox: () => this.closeLightbox(),
+      closeLightboxClick: (e) => { e.stopPropagation(); this.closeLightbox(); },
+      prevImageClick: (e) => { e.stopPropagation(); this.stepImage(-1); },
+      nextImageClick: (e) => { e.stopPropagation(); this.stepImage(1); },
+      stopPropClick: (e) => e.stopPropagation(),
+      manuscriptModalOpen: this.state.manuscriptModalOpen,
+      openManuscriptModal: () => this.setState({ manuscriptModalOpen: true }),
+      closeManuscriptModal: () => this.closeManuscriptModalNow(),
+      closeManuscriptModalBackdrop: () => this.closeManuscriptModalNow(),
+      mName: this.state.mName,
+      mAffiliation: this.state.mAffiliation,
+      mEmail: this.state.mEmail,
+      mPurpose: this.state.mPurpose,
+      mHoneypot: this.state.mHoneypot,
+      onNameChange: (e) => this.setState({ mName: e.target.value }),
+      onAffiliationChange: (e) => this.setState({ mAffiliation: e.target.value }),
+      onEmailChange: (e) => this.setState({ mEmail: e.target.value }),
+      onPurposeChange: (e) => this.setState({ mPurpose: e.target.value }),
+      onHoneypotChange: (e) => this.setState({ mHoneypot: e.target.value }),
+      mValid: mValid,
+      mShowHint: !mValid && mStatus !== 'sent',
+      mStatusSent: mStatus === 'sent',
+      mStatusError: mStatus === 'error',
+      mErrorMsg: this.state.mErrorMsg,
+      mCopyLabel: this.state.mCopied ? 'Copied!' : 'Copy Details',
+      mSendDisabled: sendDisabled,
+      mSendLabel: sendLabel,
+      copyBtnStyle: copyBtnStyle,
+      sendBtnStyle: sendBtnStyle,
+      sendManuscriptRequest: () => this.sendManuscriptRequest(),
+      copyManuscriptDetails: () => this.copyManuscriptDetails()
+    };
+  }
+}
+
+</script>
+</body>
+</html>

@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+
+<helmet>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet">
+  <style>
+    html{scroll-behavior:smooth}
+    body{margin:0;background:#14161A}
+    a{color:#F2F0EC}
+    a:hover{color:#F2F0EC}
+  </style>
+</helmet>
+<div style="font-family:'Manrope',system-ui,sans-serif;background:#14161A;color:#F2F0EC;min-height:100vh;overflow-x:hidden">
+
+  <nav style="{{ navStyle }}" data-screen-label="Nav">
+    <div style="max-width:1200px;margin:0 auto;padding:0 24px;height:72px;display:flex;align-items:center;justify-content:space-between">
+      <a href="Main Landing Page.dc.html#home" aria-label="Guillaume Arenas — Home" style="text-decoration:none;display:flex;align-items:center">
+        <div style="width:38px;height:38px;border-radius:50%;background:#33475B;display:flex;align-items:center;justify-content:center;color:#F2F0EC;font-weight:700;font-size:14px;font-family:'Manrope',sans-serif">GA</div>
+      </a>
+      <sc-if value="{{ isDesktop }}" hint-placeholder-val="{{ true }}">
+        <div style="display:flex;align-items:center;gap:6px">
+          <sc-for list="{{ navItems }}" as="item" hint-placeholder-count="3">
+            <a href="{{ item.href }}" style="{{ item.style }}" style-hover="background:#FFFFFF1A;color:#FFFFFF;transform:scale(1.05)">{{ item.label }}</a>
+          </sc-for>
+        </div>
+      </sc-if>
+      <sc-if value="{{ isMobile }}" hint-placeholder-val="{{ false }}">
+        <button onClick="{{ toggleMobileMenu }}" aria-label="Menu" style="background:none;border:none;cursor:pointer;padding:10px;display:flex;flex-direction:column;gap:5px;align-items:center;justify-content:center;width:40px;height:40px">
+          <div style="width:20px;height:2px;background:#F2F0EC;border-radius:1px"></div>
+          <div style="width:20px;height:2px;background:#F2F0EC;border-radius:1px"></div>
+          <div style="width:20px;height:2px;background:#F2F0EC;border-radius:1px"></div>
+        </button>
+      </sc-if>
+    </div>
+  </nav>
+
+  <sc-if value="{{ mobileMenuOpen }}" hint-placeholder-val="{{ false }}">
+    <div style="position:fixed;top:72px;left:0;right:0;bottom:0;background:#1C1F26;z-index:999;display:flex;flex-direction:column;padding:36px 28px;gap:30px">
+      <a onClick="{{ closeMobileMenu }}" href="Main Landing Page.dc.html#home" style="font-size:22px;font-weight:600;color:#F2F0EC;text-decoration:none">Home</a>
+      <a onClick="{{ closeMobileMenu }}" href="Main Landing Page.dc.html#projects" style="font-size:22px;font-weight:600;color:#F2F0EC;text-decoration:none">Projects</a>
+      <a onClick="{{ closeMobileMenu }}" href="Main Landing Page.dc.html#contact" style="font-size:22px;font-weight:600;color:#F2F0EC;text-decoration:none">Contact</a>
+    </div>
+  </sc-if>
+
+  <header style="max-width:1200px;margin:0 auto;padding:168px 24px 8px">
+    <h1 style="font-size:clamp(34px,5.5vw,54px);font-weight:700;line-height:1.08;letter-spacing:-0.02em;margin:0 0 14px;color:#F2F0EC">Project Title</h1>
+    <p style="font-size:17px;line-height:1.5;color:#C9C7C0;max-width:640px;margin:0">One-line summary of the project: what it is and who it's for.</p>
+  </header>
+
+  <sc-if value="{{ hasGallery }}" hint-placeholder-val="{{ true }}">
+    <section style="position:relative;max-width:1200px;margin:0 auto;padding:40px 24px 0">
+      <h2 style="font-size:24px;font-weight:600;letter-spacing:-0.01em;margin:0 0 16px;color:#F2F0EC">Gallery</h2>
+      <div style="position:relative">
+        <div ref="{{ filmstripRef }}" style="display:flex;gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:6px;scrollbar-width:none">
+          <sc-for list="{{ galleryImages }}" as="img" hint-placeholder-count="6">
+            <button onClick="{{ img.onOpen }}" aria-label="Open image fullscreen" style="flex:0 0 320px;aspect-ratio:4/3;scroll-snap-align:start;position:relative;border:1px solid #2C2F36;border-radius:12px;overflow:hidden;cursor:pointer;padding:0;background:none;transition:border-color .2s,transform .2s" style-hover="border-color:#F2F0EC;transform:translateY(-3px)">
+              <div style="position:absolute;inset:0;background:repeating-linear-gradient(45deg, #1E2129 0px, #1E2129 14px, #24272F 14px, #24272F 28px)"></div>
+              <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center">
+                <span style="font-family:'Courier New',monospace;font-size:11px;letter-spacing:0.05em;color:#8B8983;text-transform:uppercase;background:rgba(20,22,26,0.65);padding:5px 10px;border-radius:4px">{{ img.label }}</span>
+              </div>
+            </button>
+          </sc-for>
+        </div>
+        <button onClick="{{ scrollFilmstripLeft }}" aria-label="Scroll gallery left" style="position:absolute;top:50%;left:-18px;transform:translateY(-50%);width:40px;height:40px;border-radius:50%;background:#1C1F26;border:1px solid #2C2F36;color:#F2F0EC;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .2s" style-hover="background:#33475B">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+        </button>
+        <button onClick="{{ scrollFilmstripRight }}" aria-label="Scroll gallery right" style="position:absolute;top:50%;right:-18px;transform:translateY(-50%);width:40px;height:40px;border-radius:50%;background:#1C1F26;border:1px solid #2C2F36;color:#F2F0EC;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .2s" style-hover="background:#33475B">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+        </button>
+      </div>
+    </section>
+  </sc-if>
+
+  <div style="max-width:1200px;margin:0 auto;padding:56px 24px 100px;display:grid;grid-template-columns:{{ gridCols }};gap:{{ gridGap }}">
+
+    <aside style="{{ sidebarStyle }}">
+      <div style="margin-bottom:32px">
+        <div style="font-size:12px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:#8B8983;margin-bottom:14px">Tech Stack</div>
+        <div style="display:flex;flex-wrap:wrap;gap:8px">
+          <sc-for list="{{ techStack }}" as="tag" hint-placeholder-count="3">
+            <span style="font-size:12.5px;font-weight:500;color:#D7DEE3;background:#1C1F26;border:1px solid #2C2F36;padding:6px 12px;border-radius:999px">{{ tag }}</span>
+          </sc-for>
+        </div>
+      </div>
+      <div style="margin-bottom:32px">
+        
+        
+      </div>
+      <div style="margin-bottom:32px">
+        
+        
+      </div>
+      <div>
+        <div style="font-size:12px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:#8B8983;margin-bottom:14px">Links</div>
+        <div style="display:flex;flex-direction:column;gap:10px">
+          <a href="#" style="display:flex;align-items:center;gap:9px;font-size:14.5px;font-weight:600;color:#F2F0EC;background:#1C1F26;border:1px solid #2C2F36;padding:11px 16px;border-radius:8px;text-decoration:none;transition:border-color .2s,background .2s" style-hover="border-color:#F2F0EC;background:#22252C">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-4.3 1.4-4.3-2.5-6-3m12 5v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6a4.6 4.6 0 0 0-1.3-3.2 4.2 4.2 0 0 0-.1-3.2s-1.1-.3-3.5 1.3a12.3 12.3 0 0 0-6.2 0C6.5 2.8 5.4 3.1 5.4 3.1a4.2 4.2 0 0 0-.1 3.2A4.6 4.6 0 0 0 4 9.5c0 4.6 2.7 5.7 5.5 6-.6.6-.6 1.2-.5 2V21"></path></svg>
+            GitHub Repo
+          </a>
+        </div>
+      </div>
+    </aside>
+
+    <main style="min-width:0;display:flex;flex-direction:column;gap:56px">
+
+      <section>
+        <h2 style="font-size:24px;font-weight:600;letter-spacing:-0.01em;margin:0 0 16px;color:#F2F0EC">Overview</h2>
+        <p style="font-size:16px;line-height:1.7;color:#C9C7C0;margin:0">Describe what the project is, who it's for, and why it exists.</p>
+      </section>
+
+      <section>
+        <h2 style="font-size:24px;font-weight:600;letter-spacing:-0.01em;margin:0 0 16px;color:#F2F0EC">Problem &amp; Approach</h2>
+        <p style="font-size:16px;line-height:1.7;color:#C9C7C0;margin:0 0 12px"><b>Problem:</b>&nbsp;Describe the problem this project addresses.</p>
+        <p style="font-size:16px;line-height:1.7;color:#C9C7C0;margin:0"><b>Approach:&nbsp;</b>Describe how the project solves it.</p>
+      </section>
+
+      <section>
+        <h2 style="font-size:24px;font-weight:600;letter-spacing:-0.01em;margin:0 0 16px;color:#F2F0EC">Key Features</h2>
+        <ul style="margin:0;padding-left:20px;color:#C9C7C0;font-size:16px;line-height:1.8">
+          <li>Feature one</li>
+          <li>Feature two</li>
+          <li>Feature three</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2 style="font-size:24px;font-weight:600;letter-spacing:-0.01em;margin:0 0 16px;color:#F2F0EC">Results &amp; Outcomes</h2>
+        <ul style="margin:0;padding-left:20px;color:#C9C7C0;font-size:16px;line-height:1.8">
+          <li>Outcome or result one</li>
+          <li>Outcome or result two</li>
+        </ul>
+      </section>
+
+    </main>
+  </div>
+
+  <footer style="border-top:1px solid #2C2F36;padding:28px 24px;text-align:center">
+    <span style="font-size:13px;color:#8B8983">© 2026 Guillaume Arenas</span>
+  </footer>
+
+  <sc-if value="{{ lightboxActive }}" hint-placeholder-val="{{ false }}">
+    <div onClick="{{ closeLightbox }}" style="{{ backdropStyle }}">
+      <button onClick="{{ closeLightboxClick }}" aria-label="Close" style="position:fixed;top:22px;right:22px;width:44px;height:44px;border-radius:50%;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.2);color:#F2F0EC;cursor:pointer;display:flex;align-items:center;justify-content:center;z-index:2001;transition:background .2s" style-hover="background:rgba(255,255,255,0.18)">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+      </button>
+      <button onClick="{{ prevImageClick }}" aria-label="Previous image" style="position:fixed;top:50%;left:24px;transform:translateY(-50%);width:48px;height:48px;border-radius:50%;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.2);color:#F2F0EC;cursor:pointer;display:flex;align-items:center;justify-content:center;z-index:2001;transition:background .2s" style-hover="background:rgba(255,255,255,0.18)">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+      </button>
+      <button onClick="{{ nextImageClick }}" aria-label="Next image" style="position:fixed;top:50%;right:24px;transform:translateY(-50%);width:48px;height:48px;border-radius:50%;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.2);color:#F2F0EC;cursor:pointer;display:flex;align-items:center;justify-content:center;z-index:2001;transition:background .2s" style-hover="background:rgba(255,255,255,0.18)">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+      </button>
+      <div onClick="{{ stopPropClick }}" style="{{ lightboxImgStyle }}">
+        <div style="position:absolute;inset:0;background:repeating-linear-gradient(45deg, #262A33 0px, #262A33 16px, #2E323C 16px, #2E323C 32px)"></div>
+        <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center">
+          <span style="font-family:'Courier New',monospace;font-size:13px;letter-spacing:0.05em;color:#B7B4AC;text-transform:uppercase;background:rgba(20,22,26,0.6);padding:6px 12px;border-radius:4px">{{ lightboxLabel }}</span>
+        </div>
+      </div>
+    </div>
+  </sc-if>
+
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1440,&quot;height&quot;:1400},&quot;hasGallery&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Behavior&quot;}}">
+class Component extends DCLogic {
+  state = {
+    mobileMenuOpen: false,
+    isMobile: typeof window !== 'undefined' && window.innerWidth <= 760,
+    lightbox: null // {index, phase: 'enter'|'active'|'exit', originRect}
+  };
+
+  componentDidMount() {
+    this._onResize = () => {
+      const m = window.innerWidth <= 760;
+      if (m !== this.state.isMobile) this.setState({ isMobile: m, mobileMenuOpen: false });
+      if (this.state.lightbox) this.forceUpdate();
+    };
+    window.addEventListener('resize', this._onResize);
+    this._onKey = (e) => {
+      if (!this.state.lightbox) return;
+      if (e.key === 'Escape') this.closeLightbox();
+      if (e.key === 'ArrowLeft') this.stepImage(-1);
+      if (e.key === 'ArrowRight') this.stepImage(1);
+    };
+    window.addEventListener('keydown', this._onKey);
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('resize', this._onResize);
+    window.removeEventListener('keydown', this._onKey);
+  }
+
+  makeRef(id) {
+    return (el) => { if (!this.nodes) this.nodes = {}; if (el) this.nodes[id] = el; };
+  }
+
+  targetRect() {
+    const vw = window.innerWidth, vh = window.innerHeight;
+    const maxW = Math.min(vw * 0.86, 1100);
+    const maxH = Math.min(vh * 0.82, 800);
+    let w = maxW, h = w * 3 / 4;
+    if (h > maxH) { h = maxH; w = h * 4 / 3; }
+    return { top: (vh - h) / 2, left: (vw - w) / 2, width: w, height: h };
+  }
+
+  openLightbox(index, e) {
+    const rect = e.currentTarget.getBoundingClientRect();
+    const origin = { top: rect.top, left: rect.left, width: rect.width, height: rect.height };
+    this.setState({ lightbox: { index, phase: 'enter', originRect: origin } });
+    requestAnimationFrame(() => requestAnimationFrame(() => {
+      this.setState(s => s.lightbox ? { lightbox: { ...s.lightbox, phase: 'active' } } : null);
+    }));
+  }
+
+  closeLightbox() {
+    this.setState(s => s.lightbox ? { lightbox: { ...s.lightbox, phase: 'exit' } } : null);
+    setTimeout(() => this.setState({ lightbox: null }), 320);
+  }
+
+  stepImage(dir) {
+    this.setState(s => {
+      if (!s.lightbox) return null;
+      const total = 6;
+      const next = (s.lightbox.index + dir + total) % total;
+      return { lightbox: { ...s.lightbox, index: next } };
+    });
+  }
+
+  renderVals() {
+    const isMobile = this.state.isMobile;
+    const navDefs = [
+      { label: 'Home', href: 'Main Landing Page.dc.html#home' },
+      { label: 'Projects', href: 'Main Landing Page.dc.html#projects' },
+      { label: 'Contact', href: 'Main Landing Page.dc.html#contact' }
+    ];
+    const navItems = navDefs.map(n => ({
+      label: n.label, href: n.href,
+      style: { fontSize: '15px', fontWeight: 500, color: '#D7DEE3', textDecoration: 'none', padding: '9px 16px', borderRadius: '8px', background: 'transparent', transition: 'background .2s, color .2s, transform .2s' }
+    }));
+
+    const galleryImages = Array.from({ length: 6 }, (_, i) => ({
+      label: 'gallery image ' + (i + 1),
+      onOpen: (e) => this.openLightbox(i, e)
+    }));
+
+    const lb = this.state.lightbox;
+    let backdropStyle = null, lightboxImgStyle = null, lightboxLabel = '';
+    if (lb) {
+      const active = lb.phase === 'active';
+      backdropStyle = {
+        position: 'fixed', inset: 0, zIndex: 2000,
+        background: 'rgba(10,11,13,0.94)',
+        opacity: active ? 1 : 0,
+        transition: 'opacity .32s ease'
+      };
+      const r = (lb.phase === 'active') ? this.targetRect() : lb.originRect;
+      lightboxImgStyle = {
+        position: 'fixed', top: r.top + 'px', left: r.left + 'px', width: r.width + 'px', height: r.height + 'px',
+        borderRadius: active ? '10px' : '12px', overflow: 'hidden',
+        boxShadow: active ? '0 30px 70px rgba(0,0,0,0.55)' : 'none',
+        transition: 'top .36s cubic-bezier(.2,.8,.2,1), left .36s cubic-bezier(.2,.8,.2,1), width .36s cubic-bezier(.2,.8,.2,1), height .36s cubic-bezier(.2,.8,.2,1), border-radius .36s'
+      };
+      lightboxLabel = 'gallery image ' + (lb.index + 1) + ' — full view';
+    }
+
+    return {
+      isDesktop: !isMobile,
+      isMobile: isMobile,
+      mobileMenuOpen: this.state.mobileMenuOpen,
+      toggleMobileMenu: () => this.setState(s => ({ mobileMenuOpen: !s.mobileMenuOpen })),
+      closeMobileMenu: () => this.setState({ mobileMenuOpen: false }),
+      navStyle: { position: 'fixed', top: 0, left: 0, width: '100%', zIndex: 1000, background: 'rgba(20,22,26,0.55)', backdropFilter: 'blur(10px)', borderBottom: '1px solid rgba(255,255,255,0.06)' },
+      navItems: navItems,
+      gridCols: isMobile ? '1fr' : '260px 1fr',
+      gridGap: isMobile ? '40px' : '64px',
+      sidebarStyle: isMobile ? {} : { position: 'sticky', top: '104px', alignSelf: 'start' },
+      techStack: ['Tech Stack A', 'Tech Stack B', 'Tech Stack C'],
+      hasGallery: (this.props && this.props.hasGallery) !== false,
+      galleryImages: galleryImages,
+      filmstripRef: this.makeRef('filmstrip'),
+      scrollFilmstripLeft: () => { const el = this.nodes && this.nodes.filmstrip; if (el) el.scrollBy({ left: -320, behavior: 'smooth' }); },
+      scrollFilmstripRight: () => { const el = this.nodes && this.nodes.filmstrip; if (el) el.scrollBy({ left: 320, behavior: 'smooth' }); },
+      lightboxActive: !!lb,
+      backdropStyle: backdropStyle,
+      lightboxImgStyle: lightboxImgStyle,
+      lightboxLabel: lightboxLabel,
+      closeLightbox: () => this.closeLightbox(),
+      closeLightboxClick: (e) => { e.stopPropagation(); this.closeLightbox(); },
+      prevImageClick: (e) => { e.stopPropagation(); this.stepImage(-1); },
+      nextImageClick: (e) => { e.stopPropagation(); this.stepImage(1); },
+      stopPropClick: (e) => e.stopPropagation()
+    };
+  }
+}
+
+</script>
+</body>
+</html>

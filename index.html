@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Guillaume Arenas — Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="#home" class="nav-logo" aria-label="Guillaume Arenas — Home">
+      <div class="nav-logo-badge">GA</div>
+    </a>
+    <div class="nav-links">
+      <a href="#home" class="nav-link" data-section="home">Home</a>
+      <a href="#projects" class="nav-link" data-section="projects">Projects</a>
+      <a href="#contact" class="nav-link" data-section="contact">Contact</a>
+    </div>
+    <button class="nav-hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<div class="mobile-menu">
+  <a href="#home">Home</a>
+  <a href="#projects">Projects</a>
+  <a href="#contact">Contact</a>
+  <a class="btn-pill" href="resume.pdf" download="Guillaume_Arenas_Resume.pdf">Download Resume</a>
+</div>
+
+<section id="home" class="hero">
+  <div class="hero-photo-wrap">
+    <img src="images/profile-picture.png" alt="Guillaume Arenas">
+  </div>
+  <div class="hero-copy">
+    <div class="hero-greeting">Hi, I'm</div>
+    <h1 class="hero-name">Guillaume Arenas</h1>
+    <p class="hero-desc">MS Manufacturing Engineering &amp; Management student building at the intersection of hardware, data, and machine learning, from computer-vision testing rigs to applied ML pipelines.</p>
+    <div class="hero-actions">
+      <a href="#projects" class="btn-pill">View Projects</a>
+      <a href="resume.pdf" download="Guillaume_Arenas_Resume.pdf" class="btn-outline">Download Resume</a>
+    </div>
+  </div>
+</section>
+
+<section class="exp-section">
+  <div class="exp-section-inner">
+    <h2 class="section-heading">Experience &amp; Education</h2>
+    <div class="exp-tabs">
+      <div class="exp-slider" id="expSlider"></div>
+      <button class="exp-tab active" id="workTab" data-tab="work">Experience</button>
+      <button class="exp-tab" id="studiesTab" data-tab="studies">Studies</button>
+    </div>
+
+    <div class="exp-card active" id="workCard">
+      <div class="exp-logo">
+        <img src="images/ncut-logo.svg" alt="National Chin-Yi University of Technology logo">
+      </div>
+      <div class="exp-body">
+        <div class="exp-dates">Aug 2025 – Dec 2025 · May 2026 – Jul 2026</div>
+        <div class="exp-title">Graduate Research Assistant</div>
+        <div class="exp-sub">National Chin-Yi University of Technology, Taichung, Taiwan</div>
+        <div class="exp-desc">Sensor hardware prototyping + embedded CV/ML pipelines for visuotactile research.</div>
+      </div>
+    </div>
+    <div class="exp-card" id="studiesCard">
+      <div class="exp-logo">
+        <img src="images/dlsu-logo.png" alt="De La Salle University logo">
+      </div>
+      <div class="exp-body">
+        <div class="exp-dates">2021 – Expected 2027</div>
+        <div class="exp-title">De La Salle University</div>
+        <div class="exp-sub">B.S./M.S. in Manufacturing Engineering and Management</div>
+        <div class="exp-desc">CGPA 3.58/4.00, Cum Laude candidate · DOST &amp; ERDT Scholar</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="projects" class="projects-section">
+  <div class="projects-section-inner">
+    <h2 class="section-heading">Projects</h2>
+    <p class="projects-lede">Feel free to explore anything!</p>
+    <div class="projects-grid">
+
+      <a href="gripvt.html" class="project-card">
+        <div class="project-card-media">
+          <img src="images/gripvt.png" alt="GripVT screenshot">
+        </div>
+        <div class="project-card-body">
+          <div class="project-card-title">GripVT</div>
+          <p class="project-card-blurb">A wearable, camera-based sensor that estimates hand grip force from how a silicone skin deforms from anterior forearm skin changes. </p>
+          <div class="project-tags">
+            <span class="project-tag">Python</span>
+            <span class="project-tag">OpenCV</span>
+            <span class="project-tag">Scikit-Learn</span>
+          </div>
+        </div>
+      </a>
+
+      <a href="testing-rig.html" class="project-card">
+        <div class="project-card-media">
+          <img src="images/testing-rig-screenshot.jpg" alt="Low-Cost Automated Visuotactile Sensor Testing Rig screenshot">
+        </div>
+        <div class="project-card-body">
+          <div class="project-card-title">Low-Cost Automated Visuotactile Sensor Testing Rig</div>
+          <p class="project-card-blurb">A ~$250 automated test bench for characterizing soft sensor materials, replacing $10,000–$14,000 industrial robotic rigs.</p>
+          <div class="project-tags">
+            <span class="project-tag">Python</span>
+            <span class="project-tag">OpenCV</span>
+            <span class="project-tag">SciPy</span>
+            <span class="project-tag">G-code</span>
+            <span class="project-tag">Pandas</span>
+          </div>
+        </div>
+      </a>
+
+      <div class="project-card">
+        <div class="project-card-media">
+          <div class="project-card-placeholder"><span>project screenshot placeholder</span></div>
+        </div>
+        <div class="project-card-body">
+          <div class="project-card-title">Project 03</div>
+          <p class="project-card-blurb">Placeholder summary: describe the problem tackled, the approach used, and the outcome achieved. Replace with the real write-up for this project.</p>
+          <div class="project-tags">
+            <span class="project-tag">Tech Stack A</span>
+            <span class="project-tag">Tech Stack B</span>
+            <span class="project-tag">Tech Stack C</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-card-media">
+          <div class="project-card-placeholder"><span>project screenshot placeholder</span></div>
+        </div>
+        <div class="project-card-body">
+          <div class="project-card-title">Project 04</div>
+          <p class="project-card-blurb">Placeholder summary: describe the problem tackled, the approach used, and the outcome achieved. Replace with the real write-up for this project.</p>
+          <div class="project-tags">
+            <span class="project-tag">Tech Stack A</span>
+            <span class="project-tag">Tech Stack B</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-card-media">
+          <div class="project-card-placeholder"><span>project screenshot placeholder</span></div>
+        </div>
+        <div class="project-card-body">
+          <div class="project-card-title">Project 05</div>
+          <p class="project-card-blurb">Placeholder summary: describe the problem tackled, the approach used, and the outcome achieved. Replace with the real write-up for this project.</p>
+          <div class="project-tags">
+            <span class="project-tag">Tech Stack A</span>
+            <span class="project-tag">Tech Stack B</span>
+            <span class="project-tag">Tech Stack C</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-card-media">
+          <div class="project-card-placeholder"><span>project screenshot placeholder</span></div>
+        </div>
+        <div class="project-card-body">
+          <div class="project-card-title">Project 06</div>
+          <p class="project-card-blurb">Placeholder summary: describe the problem tackled, the approach used, and the outcome achieved. Replace with the real write-up for this project.</p>
+          <div class="project-tags">
+            <span class="project-tag">Tech Stack A</span>
+            <span class="project-tag">Tech Stack B</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="contact-section">
+  <div class="contact-section-inner">
+    <h2 class="section-heading">Let's Connect</h2>
+    <p class="contact-lede">Open to internships and research collaborations across manufacturing, hardware, and applied ML. Reach out anytime.</p>
+    <div class="social-links">
+      <a href="https://www.linkedin.com/in/guillaumearenas/" target="_blank" rel="noopener" aria-label="LinkedIn" class="social-link">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+      </a>
+      <a href="https://github.com/gkuarenas" target="_blank" rel="noopener" aria-label="GitHub" class="social-link">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-4.3 1.4-4.3-2.5-6-3m12 5v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6a4.6 4.6 0 0 0-1.3-3.2 4.2 4.2 0 0 0-.1-3.2s-1.1-.3-3.5 1.3a12.3 12.3 0 0 0-6.2 0C6.5 2.8 5.4 3.1 5.4 3.1a4.2 4.2 0 0 0-.1 3.2A4.6 4.6 0 0 0 4 9.5c0 4.6 2.7 5.7 5.5 6-.6.6-.6 1.2-.5 2V21"></path></svg>
+      </a>
+      <a href="mailto:guillaume.arenas0712@gmail.com" aria-label="Email" class="social-link">@</a>
+    </div>
+    <a href="resume.pdf" download="Guillaume_Arenas_Resume.pdf" class="btn-pill">Download Resume</a>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <span>© 2026 Guillaume Arenas</span>
+</footer>
+
+<script src="js/nav.js"></script>
+<script src="js/home.js"></script>
+</body>
+</html>
