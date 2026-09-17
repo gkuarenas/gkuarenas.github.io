@@ -24,26 +24,42 @@ Your bot token and chat ID stay private here — never in the page's code.
 3. Add a variable named `CHAT_ID` → paste your numeric Telegram chat ID → mark it **Encrypt**.
 4. Save.
 
-## 5. Copy your Worker's URL
+## 5. Add the rate-limit binding
+Caps how often the same visitor can submit, on top of the honeypot.
+1. Go to your Worker's **Settings** → **Bindings** → **Add**.
+2. Choose **Rate Limiting**.
+3. Name the binding `RATE_LIMITER` (the code looks for this exact name).
+4. Set the limit to 5 requests per visitor, over the shortest period the dashboard
+   offers that's closest to an hour — the exact period options depend on what
+   Cloudflare's UI shows at the time, pick the closest fit.
+5. Save. (If this binding type isn't available on your account, the Worker still
+   works fine without it — it's guarded in the code — you'd just be relying on the
+   honeypot alone until it is.)
+
+## 6. Copy your Worker's URL
 At the top of the Worker's page you'll see a URL like:
-`https://gripvt-manuscript-relay.<your-subdomain>.workers.dev`
+`https://manuscript-relay.<your-subdomain>.workers.dev`
 Copy it.
 
-## 6. Point the page at it
-In `GripVT.dc.html`, find this line near the top of the logic (search for `REPLACE-WITH-YOUR-WORKER`):
+## 7. Point the page at it
+In `js/config.js` (repo root), find this line:
 ```
-telegramWorkerUrl = 'https://REPLACE-WITH-YOUR-WORKER.workers.dev';
+const TELEGRAM_WORKER_URL = 'https://REPLACE-WITH-YOUR-WORKER.workers.dev';
 ```
-Replace the URL with the one you copied in step 5. Save.
+Replace the URL with the one you copied in step 6. Save.
 
-## 7. Test it
-Open the site, click "Manuscript Available on Request," fill in the form, hit **Send Request**.
-You should get a Telegram message within a couple seconds. If you see an error in the
-pop-up, double check the URL in step 6 and the two secrets in step 4.
+## 8. Test it
+Open `gripvt.html` or `testing-rig.html`, click "Manuscript Available on Request,"
+fill in the form, hit **Send Request**. You should get a Telegram message within a
+couple seconds. If you see an error in the pop-up, double check the URL in step 7
+and the two secrets in step 4.
 
 ## Notes
 - CORS is left open (`*`) since this is a public request form with no login — the
-  honeypot field blocks basic spam bots. If you want to lock it to only your domain
-  later, replace `'Access-Control-Allow-Origin': '*'` in `worker.js` with your GitHub
-  Pages URL.
+  honeypot field and the rate-limit binding are the spam gates. If you want to lock
+  it to only your domain later, replace `'Access-Control-Allow-Origin': '*'` in
+  `worker.js` with your GitHub Pages URL.
+- The Worker validates field lengths and email format server-side too (not just in
+  the page's JS), so a request sent straight to the Worker URL (bypassing the page)
+  still gets rejected if it's malformed.
 - Free Cloudflare Workers tier covers far more requests than a portfolio site will see.

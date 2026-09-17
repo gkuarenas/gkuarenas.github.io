@@ -17,6 +17,16 @@ export default {
       return json({ ok: false, error: 'Method not allowed' }, 405, corsHeaders);
     }
 
+    // Rate limit: configured on the RATE_LIMITER binding (Settings -> Bindings).
+    // Guarded so the Worker still works before that binding is added.
+    if (env.RATE_LIMITER) {
+      const ip = request.headers.get('CF-Connecting-IP') || 'unknown';
+      const { success } = await env.RATE_LIMITER.limit({ key: ip });
+      if (!success) {
+        return json({ ok: false, error: 'Too many requests' }, 429, corsHeaders);
+      }
+    }
+
     let data;
     try {
       data = await request.json();
@@ -38,6 +48,17 @@ export default {
 
     if (!name || !affiliation || !email) {
       return json({ ok: false, error: 'Missing required fields' }, 400, corsHeaders);
+    }
+
+    const MAX_LEN = { name: 50, affiliation: 100, email: 200, project: 200, purpose: 200 };
+    if (name.length > MAX_LEN.name || affiliation.length > MAX_LEN.affiliation ||
+        email.length > MAX_LEN.email || project.length > MAX_LEN.project ||
+        purpose.length > MAX_LEN.purpose) {
+      return json({ ok: false, error: 'Field too long' }, 400, corsHeaders);
+    }
+
+    if (!/\S+@\S+\.\S+/.test(email)) {
+      return json({ ok: false, error: 'Invalid email' }, 400, corsHeaders);
     }
 
     const text = [
