@@ -8,7 +8,7 @@ Go to https://dash.cloudflare.com/sign-up and sign up (free tier is enough).
 
 ## 2. Create the Worker
 1. In the dashboard sidebar: **Workers & Pages** → **Create**.
-2. Choose **Create Worker**, give it a name (e.g. `gripvt-manuscript-relay`), click **Deploy**.
+2. Choose **Create Worker**, give it a name (e.g. `manuscript-relay` — this Worker is shared across all projects' manuscript-request forms), click **Deploy**.
    This creates a placeholder "Hello World" worker — that's fine, you'll replace it.
 
 ## 3. Paste the relay code

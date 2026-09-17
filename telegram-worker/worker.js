@@ -34,13 +34,14 @@ export default {
     const affiliation = (data.affiliation || '').trim();
     const email = (data.email || '').trim();
     const purpose = (data.purpose || '').trim();
+    const project = (data.project || 'Portfolio site').trim();
 
     if (!name || !affiliation || !email) {
       return json({ ok: false, error: 'Missing required fields' }, 400, corsHeaders);
     }
 
     const text = [
-      '📄 New Manuscript Request — GripVT',
+      `📄 New Manuscript Request — ${project}`,
       '',
       `Name: ${name}`,
       `Affiliation: ${affiliation}`,

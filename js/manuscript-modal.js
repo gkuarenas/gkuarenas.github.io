@@ -1,7 +1,12 @@
-// gripvt.html only: "Request the Manuscript" modal — validation, submit state
-// machine, and the POST to the Cloudflare Worker relay (see js/config.js).
+// Shared by any project page with a "Request the Manuscript" modal —
+// validation, submit state machine, and the POST to the Cloudflare Worker
+// relay (see js/config.js). Project name comes from the trigger button's
+// data-project attribute, so one Worker can serve every project's page.
 (function () {
   const openBtn = document.getElementById('openManuscriptModal');
+  if (!openBtn) return;
+  const PROJECT_NAME = openBtn.dataset.project || 'Portfolio site';
+
   const backdrop = document.getElementById('modalBackdrop');
   const modal = document.getElementById('modal');
   const closeBtn = document.getElementById('modalClose');
@@ -88,7 +93,8 @@
         affiliation: affiliationInput.value.trim(),
         email: emailInput.value.trim(),
         purpose: purposeInput.value.trim(),
-        website: honeypotInput.value
+        website: honeypotInput.value,
+        project: PROJECT_NAME
       })
     }).then((res) => res.json().catch(() => ({ ok: false })).then((data) => {
       if (res.ok && data.ok) {
@@ -112,7 +118,7 @@
   });
 
   copyBtn.addEventListener('click', () => {
-    const text = `Manuscript Request — GripVT\nName: ${nameInput.value}\nAffiliation: ${affiliationInput.value}\nEmail: ${emailInput.value}\nPurpose: ${purposeInput.value || '(none)'}`;
+    const text = `Manuscript Request — ${PROJECT_NAME}\nName: ${nameInput.value}\nAffiliation: ${affiliationInput.value}\nEmail: ${emailInput.value}\nPurpose: ${purposeInput.value || '(none)'}`;
     if (navigator.clipboard && navigator.clipboard.writeText) {
       navigator.clipboard.writeText(text).then(() => {
         if (copyTimer) clearTimeout(copyTimer);
