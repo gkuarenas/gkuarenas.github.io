@@ -78,7 +78,7 @@ diagnostic view.
 
 ## Open items
 
-- Confirm the exact page file name: marker-tracking-pipeline.html.
+- Page file name confirmed: marker-tracking-pipeline.html.
 - Guillaume confirmed full technical detail is fine for this page. The
   method above already matches what the design docs describe. Guillaume
   should still review the final page copy before it goes live.

@@ -8,10 +8,18 @@ Repo: none.
 
 ## Guillaume's role
 
-Guillaume contributed to signal extraction and image processing.
-Co-authors: Joshua Adrian Bautista, Renann Baldovino, Aaron Raymond See.
-Published, De La Salle University and National Chin-Yi University of
-Technology.
+Guillaume did not design the sensing skin itself. That work belongs to
+his co-authors. Guillaume designed the black-housing camera module that
+observes the skin, and he built the software for signal extraction and
+image processing.
+
+The page must state this split plainly: skin design by the team, camera
+module and signal-processing software by Guillaume. Do not credit
+Guillaume with the skin design.
+
+Co-authors are already credited in the full paper, linked by DOI. The
+page must not list co-author names again. It should highlight only
+Guillaume's own contributions.
 
 ## Problem
 
@@ -22,17 +30,20 @@ misalignment.
 
 ## Method
 
-1. Built a sensing skin as a 30 x 30 mm silicone lattice of hollow square
-   cells, molded from PDMS silicone embedded with ZnS:Cu,Al phosphor. The
-   phosphor emits light when the lattice deforms. No external light
-   source is needed.
-2. Mounted the lattice on an acrylic window of a black-housing camera
-   module.
-3. Applied two contact types by hand: normal pressing and shear sliding.
-4. Recorded the light emission with the camera and extracted
-   intensity-time signals from the footage.
-5. Processed the images to separate emission patterns by contact type:
-   localized spots for pressing, elongated streaks for shear.
+1. The team built a sensing skin as a 30 x 30 mm silicone lattice of
+   hollow square cells, molded from PDMS silicone embedded with
+   ZnS:Cu,Al phosphor. The phosphor emits light when the lattice
+   deforms. No external light source is needed. Guillaume did not design
+   this part.
+2. Guillaume designed the black-housing camera module that mounts the
+   lattice on an acrylic window and observes it.
+3. The team applied two contact types by hand: normal pressing and shear
+   sliding.
+4. Guillaume's software recorded the light emission with the camera and
+   extracted intensity-time signals from the footage.
+5. Guillaume's software processed the images to separate emission
+   patterns by contact type: localized spots for pressing, elongated
+   streaks for shear.
 
 ## Result
 
@@ -45,17 +56,25 @@ misalignment.
 
 ## Page sections (matches Project Detail template)
 
-- Overview: what a mechanoluminescent skin is, and why it removes the
-  lighting requirement other visuotactile sensors need.
-- Problem & Approach: as above.
+- Overview: what a mechanoluminescent skin is, why it removes the
+  lighting requirement other visuotactile sensors need, and a one-line
+  statement of Guillaume's own part (camera module design, signal
+  extraction and image processing).
+- Problem & Approach: as above. Attribute the skin design to the team,
+  not to Guillaume.
 - Key Features: no external light source, lattice geometry concentrates
   strain at rod junctions, two contact modes tested.
 - Results & Outcomes: the three points above, stated plainly. Keep the
   "preliminary, uncalibrated" qualifier. Do not present this as a
   finished sensor.
 - Tech Stack tags: Python, OpenCV, Signal Processing, Image Processing.
-- Links: paper DOI
-  (https://doi.org/10.1109/ICCT-Pacific69083.2026.11519013).
+- Links: a "View Paper" button linking straight to the DOI
+  (https://doi.org/10.1109/ICCT-Pacific69083.2026.11519013), styled like
+  the existing `.link-btn` on GripVT/Testing Rig but opening the DOI in
+  a new tab instead of the manuscript-request modal. Icon is an
+  external-link icon, not the envelope icon used for the manuscript
+  request. See project-pcb-defect-detection.md for the full spec, shared
+  by both published-paper projects.
 
 ## Images
 
@@ -71,7 +90,8 @@ site. Guillaume should confirm this before the figures go live.
 
 ## Open items
 
-- Confirm the exact page file name: mechanoluminescent-elastomer.html.
-- Confirm whether co-author names should appear on the page. Usual
-  practice is to credit co-authors in a short line, since this is a
-  group publication.
+- Page file name confirmed: mechanoluminescent-elastomer.html.
+- Co-author credit confirmed: do not list co-author names on the page.
+  The full paper (linked by DOI) already credits them.
+- Button text and icon confirmed: "View Paper," external-link icon
+  (shared decision, see project-pcb-defect-detection.md).

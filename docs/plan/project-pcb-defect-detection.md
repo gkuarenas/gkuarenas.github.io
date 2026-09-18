@@ -42,14 +42,34 @@ methods need heavy setup or miss small defects.
 
 ## Page sections (matches Project Detail template)
 
-- Overview: one paragraph on the problem and why it matters for
-  manufacturing QC.
+- Overview: one paragraph on the problem, why it matters for
+  manufacturing QC, and Guillaume's role (first author, student team
+  lead, worked across dataset prep, augmentation, training, testing,
+  evaluation, and writing). Do not list all nine paper authors on the
+  page. The full author list is already in the linked paper.
 - Problem & Approach: as above.
 - Key Features: dataset scale, six-defect coverage, TensorRT
   optimization.
 - Results & Outcomes: the four numbers above, stated plainly.
 - Tech Stack tags: Python, YOLOv8, TensorRT, Roboflow, OpenCV.
-- Links: paper DOI only. No repo link, since none is public.
+- Links: a "View Paper" style button linking straight to the DOI. No
+  repo link, since none is public.
+
+### Shared decision: the "View Paper" button
+
+GripVT and Testing Rig use a `.link-btn`-styled button reading
+"Manuscript Available on Request," which opens a modal that relays a
+request through the Telegram worker. That flow fits those two projects
+because their papers are not public yet.
+
+PCB Defect Detection and Mechanoluminescent Elastomer both have a public
+DOI already, so they need a different button: same `.link-btn` visual
+style, but a plain `<a>` link to the DOI, opening in a new tab
+(`target="_blank" rel="noopener"`), with no modal and no form.
+
+Decided: button text is "View Paper." Icon is an external-link icon
+(arrow out of a box), not the envelope icon used for the manuscript
+request. Both new-project pages use this same button.
 
 ## Images
 
@@ -69,7 +89,7 @@ site. Guillaume should confirm this before the figures go live.
 
 ## Open items
 
-- Confirm the exact page file name: pcb-defect-detection.html.
-- Confirm whether the Overview should name the nine-author paper and
-  state Guillaume's specific role, since the paper text does not split
-  contributions by author.
+- Page file name confirmed: pcb-defect-detection.html.
+- Author naming resolved: do not list the nine paper authors on the
+  page. State only Guillaume's own role, as given above.
+- Button text and icon confirmed: "View Paper," external-link icon.
