@@ -62,17 +62,25 @@
     <section class="content-section">
       <h2>Problem &amp; Approach</h2>
       <p><b>Problem:</b>&nbsp;GripVT reads grip force from how the marker band deforms, so the pipeline must find each of the 99 markers' position and size every frame, precisely enough to catch a small muscle bulge under a 5% grip. The band is worn and removed between sessions, so lighting and marker position shift each time.</p>
-      <p><b>Approach:&nbsp;</b>Undistort each frame, rotate it to a common orientation, convert it to grayscale, then crop and clean it up with morphology to isolate candidate marker blobs. Fit a closed-form 2D Gaussian to each blob with the Caruana log-parabola method, reading off a sub-pixel center and size with no threshold to tune, and fall back to the blob centroid when a fit is invalid. Capture a 15-frame baseline to lock each marker's identity and starting position, then track every marker frame to frame with a Kalman filter and gated Hungarian assignment, computing displacement and size change relative to that baseline.</p>
+      <div class="problem-figure">
+        <img src="images/marker-pipeline-diagram.png" alt="Pipeline stages: input frame, undistortion, preprocessing, detection, identity assignment, and displacement output">
+      </div>
+      <p><b>Approach:&nbsp;</b>Undistort each frame and rotate it 90° to match the region-of-interest orientation, then crop, denoise, flatten illumination, and binarize with morphology and a mask to isolate candidate marker blobs. Fit a closed-form 2D Gaussian to each blob with the Caruana log-parabola method, reading a sub-pixel center and size off the raw, unmasked frame with no threshold to tune, and fall back to the connected-component centroid and area when a fit is invalid. Capture a 15-frame baseline to lock each marker's identity and starting position, then track every marker frame to frame with a Kalman filter and gated Hungarian assignment, computing pixel-space displacement and area change relative to that baseline.</p>
     </section>
 
     <section class="content-section">
       <h2>Key Features</h2>
-      <ul>
-        <li>Sub-pixel marker center and size from a closed-form 2D Gaussian fit (Caruana log-parabola method), no iteration needed</li>
-        <li>Threshold-free sizing: the fit reads size directly from blob intensity, with no threshold to tune</li>
-        <li>Robust baseline capture: a 15-frame median with a presence filter, so one noisy frame cannot poison a session</li>
-        <li>Gated Hungarian tracking: an explicit reject option stops a missing or stray detection from corrupting a neighboring match</li>
-      </ul>
+      <div class="feature-wrap">
+        <div class="feature-figure">
+          <img src="images/Figure-4.23.png" alt="Marker detection: raw grid vs. tracked markers">
+        </div>
+        <ul>
+          <li>Sub-pixel marker center and size from a closed-form 2D Gaussian fit (Caruana log-parabola method), no iteration needed</li>
+          <li>Two-path detection: marker positions are located on the cleaned, masked image, but size and intensity are measured from the raw frame, avoiding bias from binarization</li>
+          <li>Robust baseline capture: a 15-frame median with a presence filter, so one noisy frame cannot poison a session</li>
+          <li>Gated Hungarian tracking: an explicit reject option stops a missing or stray detection from corrupting a neighboring match</li>
+        </ul>
+      </div>
     </section>
 
     <section class="content-section">
@@ -83,6 +91,12 @@
         <li>Gated Hungarian assignment stops a missing or stray detection from corrupting a correct neighboring match</li>
         <li>This is in-progress thesis work. There is no final accuracy number yet, since tuning against real GripVT footage is still pending</li>
       </ul>
+      <div class="problem-figure">
+        <img src="images/Figure-4.25.png" alt="All 99 markers detected across relaxed, full open, and max grip states">
+      </div>
+      <div class="problem-figure">
+        <img src="images/marker-tracking-demo.gif" alt="Live detector calibration view tracking all 99 markers in real time">
+      </div>
     </section>
 
   </main>
