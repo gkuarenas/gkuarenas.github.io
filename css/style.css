@@ -207,16 +207,6 @@ a.project-card:hover { transform: translateY(-6px); box-shadow: 0 18px 36px rgba
 .project-card-media { position: relative; overflow: hidden; aspect-ratio: 16/10; }
 .project-card-media img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transition: transform .5s ease, filter .5s ease; }
 a.project-card:hover .project-card-media img { transform: scale(1.06); filter: brightness(1.08); }
-.project-card-placeholder {
-  position: absolute; inset: 0;
-  background: repeating-linear-gradient(45deg, #EFEDE9 0px, #EFEDE9 12px, #F7F5F2 12px, #F7F5F2 24px);
-  display: flex; align-items: center; justify-content: center;
-}
-.project-card-placeholder span {
-  font-family: 'Courier New', monospace; font-size: 12px; letter-spacing: 0.06em;
-  color: #9C988F; text-transform: uppercase;
-  background: rgba(255,255,255,0.75); padding: 5px 11px; border-radius: 4px;
-}
 .project-card-body { padding: 26px 28px 30px; }
 .project-card-title { font-size: 20px; font-weight: 700; color: #171717; margin-bottom: 10px; }
 .project-card-blurb { font-size: 15px; line-height: 1.65; color: #3A3835; margin: 0 0 18px; }
@@ -342,7 +332,6 @@ a.project-card:hover .project-tag { color: #171717; background: #E9DFC8; }
   transition: background .2s;
 }
 .modal-close:hover { background: var(--border); }
-.modal-icon { width: 44px; height: 44px; border-radius: 50%; background: var(--accent); display: flex; align-items: center; justify-content: center; margin-bottom: 16px; }
 .modal h3 { font-size: 20px; font-weight: 700; margin: 0 0 6px; color: var(--text); }
 .modal-desc { font-size: 14px; line-height: 1.5; color: var(--muted); margin: 0 0 22px; }
 .form-field { display: flex; flex-direction: column; gap: 6px; margin-bottom: 12px; }

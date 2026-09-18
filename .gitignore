@@ -2,3 +2,7 @@
 *.zip
 .env
 .env.*
+CLAUDE.md
+docs/plan/
+design-reference/
+telegram-worker/

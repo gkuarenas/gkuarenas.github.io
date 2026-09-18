@@ -1,4 +1,4 @@
-// Shared by gripvt.html and testing-rig.html: filmstrip scroll + lightbox.
+// Shared by all project pages with a gallery: filmstrip scroll + lightbox.
 (function () {
   const items = Array.from(document.querySelectorAll('.gallery-item'));
   if (!items.length) return;
