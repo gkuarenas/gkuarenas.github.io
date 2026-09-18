@@ -37,6 +37,28 @@
   <p>A sub-pixel marker detection and tracking pipeline for a visuotactile sensor, built on Gaussian fitting and Kalman filtering.</p>
 </header>
 
+<section class="gallery-section">
+  <h2>Gallery</h2>
+  <div class="gallery-wrap">
+    <div class="filmstrip" id="filmstrip">
+      <button class="gallery-item" data-index="0" aria-label="Open image fullscreen">
+        <img src="images/Figure-4.25.png" alt="All 99 markers detected across relaxed, full open, and max grip states">
+        <div class="gallery-caption"><span>Detection across grip states</span></div>
+      </button>
+      <button class="gallery-item" data-index="1" aria-label="Open image fullscreen">
+        <img src="images/marker-tracking-demo.gif" alt="Live detector calibration view tracking all 99 markers in real time">
+        <div class="gallery-caption"><span>Live tracking demo</span></div>
+      </button>
+    </div>
+    <button class="gallery-arrow left" id="filmLeft" aria-label="Scroll gallery left">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+    </button>
+    <button class="gallery-arrow right" id="filmRight" aria-label="Scroll gallery right">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+    </button>
+  </div>
+</section>
+
 <div class="detail-grid">
 
   <aside class="sidebar">
@@ -91,12 +113,6 @@
         <li>Gated Hungarian assignment stops a missing or stray detection from corrupting a correct neighboring match</li>
         <li>This is in-progress thesis work. There is no final accuracy number yet, since tuning against real GripVT footage is still pending</li>
       </ul>
-      <div class="problem-figure">
-        <img src="images/Figure-4.25.png" alt="All 99 markers detected across relaxed, full open, and max grip states">
-      </div>
-      <div class="problem-figure">
-        <img src="images/marker-tracking-demo.gif" alt="Live detector calibration view tracking all 99 markers in real time">
-      </div>
     </section>
 
   </main>
@@ -106,6 +122,23 @@
   <span>© 2026 Guillaume Arenas</span>
 </footer>
 
+<!-- Lightbox -->
+<div class="lightbox-backdrop" id="lightboxBackdrop">
+  <button class="lightbox-icon-btn lightbox-close" id="lightboxClose" aria-label="Close">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+  </button>
+  <button class="lightbox-icon-btn lightbox-prev" id="lightboxPrev" aria-label="Previous image">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+  </button>
+  <button class="lightbox-icon-btn lightbox-next" id="lightboxNext" aria-label="Next image">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+  </button>
+  <div class="lightbox-frame" id="lightboxFrame">
+    <img id="lightboxImg" src="" alt="">
+  </div>
+</div>
+
 <script src="js/nav.js"></script>
+<script src="js/gallery-lightbox.js"></script>
 </body>
 </html>
