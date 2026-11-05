@@ -3,216 +3,509 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Guillaume Arenas — Portfolio</title>
+<title>Guillaume Arenas | Data Science and ML Engineering Portfolio</title>
+<meta name="description" content="Guillaume Arenas, BS/MS Manufacturing Engineering student at De La Salle University. Open to Data Science and ML Engineering internships from January 2027. ML on real physical systems.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Guillaume Arenas | Data Science and ML Engineering Portfolio">
+<meta property="og:description" content="Open to Data Science and ML Engineering internships from January 2027. ML on real physical systems.">
+<meta property="og:url" content="https://gkuarenas.github.io/">
+<meta property="og:image" content="https://gkuarenas.github.io/apple-touch-icon.png">
+<meta name="twitter:card" content="summary">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/style.css">
+<link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400;600;700&family=VT323&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/retro.css">
+<script src="js/scene.js" defer></script>
+<script src="js/windows.js" defer></script>
+<script src="js/router.js" defer></script>
+<script src="js/config.js" defer></script>
+<script src="js/manuscript-modal.js" defer></script>
 </head>
 <body>
 
-<nav class="nav">
-  <div class="nav-inner">
-    <a href="#home" class="nav-logo" aria-label="Guillaume Arenas — Home">
-      <div class="nav-logo-badge">GA</div>
-    </a>
-    <div class="nav-links">
-      <a href="#home" class="nav-link" data-section="home">Home</a>
-      <a href="#projects" class="nav-link" data-section="projects">Projects</a>
-      <a href="#contact" class="nav-link" data-section="contact">Contact</a>
+<noscript>
+  <div style="position:fixed;inset:0;z-index:99999;overflow:auto;background:#007B7B;color:#000;font-family:monospace;font-size:20px;padding:24px">
+    <div style="max-width:640px;margin:0 auto;background:#fff;padding:24px">
+      <h1>Guillaume Arenas</h1>
+      <p>BS/MS Manufacturing Engineering and Management student at De La Salle University. Open to Data Science and ML Engineering internships from January 2027. ML on real physical systems.</p>
+      <p>This portfolio is an interactive desk and needs JavaScript. Without it, use these links:</p>
+      <ul>
+        <li><a href="mailto:guillaume.arenas0712@gmail.com">guillaume.arenas0712@gmail.com</a></li>
+        <li><a href="https://www.linkedin.com/in/guillaumearenas/">LinkedIn</a></li>
+        <li><a href="https://github.com/gkuarenas">GitHub</a></li>
+        <li><a href="resume.pdf">Resume (PDF)</a></li>
+      </ul>
     </div>
-    <button class="nav-hamburger" aria-label="Menu">
-      <span></span><span></span><span></span>
-    </button>
   </div>
-</nav>
+</noscript>
 
-<div class="mobile-menu">
-  <a href="#home">Home</a>
-  <a href="#projects">Projects</a>
-  <a href="#contact">Contact</a>
-  <a class="btn-pill" href="resume.pdf" download="Guillaume_Arenas_Resume.pdf">Download Resume</a>
+<!-- ============ DESK SCENE (desktop mode) ============ -->
+<div id="stage">
+  <h1 class="sr-only">Guillaume Arenas, portfolio</h1>
+  <div id="fit">
+    <div id="scene">
+      <div id="cam">
+        <svg aria-hidden="true" width="1460" height="800" viewBox="0 0 1460 800" shape-rendering="crispEdges">
+          <defs><pattern id="peg" width="48" height="44" patternUnits="userSpaceOnUse"><rect x="8" y="6" width="6" height="16" fill="#9B9A88"/><rect x="32" y="28" width="6" height="16" fill="#9B9A88"/></pattern></defs>
+              <rect x="-4000" y="-3000" width="9500" height="6800" fill="#3B4A45"/>
+              <rect x="398" y="36" width="512" height="332" fill="#000" opacity="0.16"/><rect x="390" y="28" width="512" height="332" fill="#EDEBE4"/><rect x="390" y="28" width="512" height="3" fill="#FAF9F4"/><rect x="390" y="356" width="512" height="4" fill="#CFCCC2"/><rect x="390" y="32" width="512" height="324" fill="url(#peg)"/>
+              <g transform="translate(-72 28)">
+                <rect x="622" y="102" width="30" height="236" fill="#000" opacity="0.13"/>
+                <rect x="622" y="88" width="8" height="10" fill="#FAF9F4"/><rect x="636" y="96" width="8" height="10" fill="#FAF9F4"/>
+                <rect x="616" y="96" width="12" height="236" fill="#1D2A4A"/><rect x="628" y="96" width="14" height="110" fill="#C93A2B"/><rect x="628" y="206" width="14" height="126" fill="#1D2A4A"/><rect x="620" y="240" width="4" height="60" fill="#D9D9D9"/>
+                <rect x="612" y="352" width="56" height="46" fill="#000" opacity="0.13"/><rect x="608" y="344" width="48" height="48" fill="#22262A"/><rect x="602" y="352" width="60" height="32" fill="#22262A"/><rect x="612" y="350" width="40" height="36" fill="#8A9096"/><rect x="628" y="356" width="8" height="24" fill="#5B6167"/>
+                <rect x="626" y="332" width="12" height="12" fill="#D9D9D9"/>
+              </g>
+              <g transform="translate(194 -80)">
+                <rect x="498" y="136" width="96" height="10" fill="#000" opacity="0.13"/><rect x="486" y="234" width="48" height="70" fill="#000" opacity="0.13"/><rect x="566" y="234" width="48" height="70" fill="#000" opacity="0.13"/>
+                <rect x="508" y="116" width="6" height="16" fill="#FAF9F4"/><rect x="576" y="116" width="6" height="16" fill="#FAF9F4"/>
+                <rect x="512" y="126" width="72" height="10" fill="#1B1D1F"/><rect x="512" y="126" width="72" height="3" fill="#3A3D40"/><rect x="500" y="134" width="14" height="12" fill="#1B1D1F"/><rect x="582" y="134" width="14" height="12" fill="#1B1D1F"/><rect x="492" y="146" width="12" height="82" fill="#A9B0B5"/><rect x="592" y="146" width="12" height="82" fill="#A9B0B5"/><rect x="496" y="160" width="4" height="50" fill="#5C6266"/><rect x="596" y="160" width="4" height="50" fill="#5C6266"/>
+                <rect x="480" y="226" width="42" height="68" fill="#17191A"/><rect x="486" y="220" width="30" height="80" fill="#17191A"/><rect x="492" y="240" width="18" height="40" fill="#35383B"/>
+                <rect x="560" y="226" width="42" height="68" fill="#17191A"/><rect x="566" y="220" width="30" height="80" fill="#17191A"/><rect x="572" y="240" width="18" height="40" fill="#35383B"/>
+              </g>
+              <rect x="120" y="760" width="1120" height="40" fill="#000" opacity="0.2"/>
+              <rect x="100" y="490" width="1150" height="230" fill="#9B7650"/><rect x="100" y="490" width="1150" height="5" fill="#7E5D3E"/><rect x="100" y="560" width="1150" height="2" fill="#92704B"/><rect x="100" y="640" width="1150" height="2" fill="#92704B"/><rect x="100" y="714" width="1150" height="6" fill="#BB9468"/><rect x="100" y="720" width="1150" height="36" fill="#6E4F34"/><rect x="100" y="756" width="1150" height="4" fill="#3F2C1C"/>
+              <rect x="130" y="760" width="42" height="2400" fill="#5A402A"/><rect x="1178" y="760" width="42" height="2400" fill="#5A402A"/>
+              <g>
+                <rect x="1322" y="580" width="10" height="2580" fill="#2B2F31"/><rect x="1400" y="580" width="10" height="2580" fill="#2B2F31"/><rect x="1360" y="580" width="10" height="2580" fill="#1E2224"/><rect x="1306" y="572" width="118" height="10" fill="#3B4044"/>
+                <rect x="1320" y="470" width="92" height="14" fill="#C96F45"/><rect x="1314" y="470" width="104" height="5" fill="#DD8A5E"/><rect x="1324" y="484" width="84" height="88" fill="#B55A34"/><rect x="1392" y="484" width="16" height="88" fill="#8E4426"/><rect x="1324" y="474" width="84" height="6" fill="#3B2A1E"/>
+                <rect x="1364" y="250" width="8" height="224" fill="#245433"/><rect x="1340" y="330" width="6" height="144" fill="#245433"/><rect x="1392" y="300" width="6" height="174" fill="#245433"/>
+                <rect x="1330" y="180" width="80" height="84" fill="#2F6B3F"/><rect x="1312" y="204" width="116" height="44" fill="#2F6B3F"/><rect x="1352" y="150" width="36" height="36" fill="#3F8A52"/><rect x="1340" y="196" width="24" height="24" fill="#3F8A52"/>
+                <rect x="1276" y="280" width="76" height="60" fill="#3F8A52"/><rect x="1290" y="266" width="48" height="88" fill="#2F6B3F"/><rect x="1384" y="240" width="72" height="62" fill="#3F8A52"/><rect x="1400" y="228" width="44" height="86" fill="#2F6B3F"/>
+                <rect x="1298" y="376" width="62" height="48" fill="#2F6B3F"/><rect x="1312" y="364" width="34" height="72" fill="#3F8A52"/><rect x="1386" y="360" width="60" height="50" fill="#245433"/>
+              </g>
+              <rect x="1050" y="130" width="210" height="6" fill="#8A6645"/><rect x="1050" y="136" width="210" height="10" fill="#6E4F34"/><rect x="1050" y="146" width="210" height="6" fill="#000" opacity="0.2"/>
+              <rect x="1074" y="62" width="52" height="74" fill="#E06F2B"/><rect x="1118" y="62" width="8" height="74" fill="#B8551E"/><rect x="1150" y="48" width="24" height="88" fill="#2F6C8E"/><rect x="1168" y="48" width="6" height="88" fill="#245470"/><rect x="1174" y="62" width="28" height="74" fill="#D2A63F"/><rect x="1196" y="62" width="6" height="74" fill="#A98331"/>
+              <g fill="#000" opacity="0.12"><rect x="160" y="108" width="24" height="382"/><rect x="448" y="108" width="24" height="382"/><rect x="160" y="104" width="312" height="20"/><rect x="186" y="240" width="262" height="16"/></g>
+              <rect x="150" y="90" width="28" height="372" fill="#3B4247"/><rect x="172" y="90" width="6" height="372" fill="#2B3035"/><rect x="438" y="90" width="28" height="372" fill="#3B4247"/><rect x="460" y="90" width="6" height="372" fill="#2B3035"/><rect x="150" y="90" width="316" height="14" fill="#4C555C"/><rect x="150" y="104" width="316" height="10" fill="#343A3E"/>
+              <rect x="178" y="232" width="260" height="8" fill="#7A858E"/><rect x="178" y="240" width="260" height="8" fill="#68727B"/>
+              <rect x="284" y="210" width="52" height="10" fill="#F08543"/><rect x="284" y="220" width="52" height="58" fill="#E06F2B"/><rect x="304" y="278" width="10" height="20" fill="#D2A63F"/>
+              <rect x="130" y="456" width="360" height="24" fill="#2B3035"/><rect x="130" y="456" width="360" height="4" fill="#454D54"/><rect x="130" y="480" width="360" height="22" fill="#1E2225"/><rect x="134" y="502" width="360" height="6" fill="#000" opacity="0.2"/>
+              <rect x="190" y="440" width="230" height="16" fill="#D9D3C2"/><rect x="190" y="456" width="230" height="4" fill="#AFA892"/>
+              <rect x="266" y="420" width="80" height="10" fill="#F08543"/><rect x="266" y="430" width="80" height="16" fill="#E06F2B"/>
+              <rect x="672" y="252" width="320" height="228" fill="#000" opacity="0.12"/>
+              <rect x="660" y="228" width="324" height="12" fill="#E2DCCB"/>
+              <rect x="770" y="480" width="104" height="14" fill="#B7AF9C"/><rect x="744" y="494" width="156" height="8" fill="#CFC8B6"/><rect x="744" y="502" width="156" height="6" fill="#8E8775"/><rect x="748" y="508" width="156" height="4" fill="#000" opacity="0.22"/>
+              <rect x="884" y="505" width="24" height="4" fill="#E5DFCF"/><rect x="908" y="509" width="52" height="4" fill="#E5DFCF"/><rect x="960" y="513" width="60" height="4" fill="#E5DFCF"/><rect x="1020" y="517" width="50" height="4" fill="#E5DFCF"/><rect x="1070" y="521" width="30" height="4" fill="#E5DFCF"/><rect x="1100" y="525" width="16" height="4" fill="#E5DFCF"/><rect x="1116" y="529" width="4" height="34" fill="#E5DFCF"/>
+              <rect x="622" y="592" width="406" height="5" fill="#000" opacity="0.22"/><rect x="620" y="552" width="405" height="34" fill="#CFC8B6"/><rect x="620" y="586" width="405" height="8" fill="#8E8775"/><rect x="632" y="557" width="381" height="6" fill="#E8E2D2"/><rect x="632" y="566" width="381" height="6" fill="#E8E2D2"/><rect x="632" y="575" width="381" height="6" fill="#E8E2D2"/>
+              <rect x="1042" y="592" width="164" height="5" fill="#000" opacity="0.2"/><rect x="1040" y="552" width="164" height="38" fill="#26303A"/><rect x="1040" y="552" width="164" height="3" fill="#3A4652"/><rect x="1040" y="590" width="164" height="4" fill="#141A20"/>
+              <rect x="1096" y="582" width="50" height="4" fill="#000" opacity="0.3"/><rect x="1094" y="560" width="50" height="16" fill="#D9D3C2"/><rect x="1094" y="560" width="50" height="3" fill="#EFE9DA"/><rect x="1094" y="568" width="50" height="1" fill="#8E8775"/><rect x="1118" y="560" width="2" height="8" fill="#8E8775"/><rect x="1094" y="576" width="50" height="7" fill="#A79F8B"/>
+              <rect x="538" y="588" width="70" height="5" fill="#000" opacity="0.22"/><rect x="534" y="508" width="64" height="82" fill="#D9D3C2"/><rect x="534" y="508" width="64" height="12" fill="#EFE9DA"/><rect x="540" y="510" width="52" height="8" fill="#4A3425"/><rect x="586" y="520" width="12" height="70" fill="#AFA892"/><rect x="598" y="530" width="16" height="40" fill="#D9D3C2"/><rect x="604" y="538" width="6" height="24" fill="#9B7650"/>
+              <rect x="204" y="601" width="74" height="4" fill="#000" opacity="0.22"/><rect x="200" y="580" width="72" height="20" fill="#20603F"/><rect x="200" y="600" width="72" height="3" fill="#123D28"/><rect x="208" y="583" width="20" height="9" fill="#1B1F22"/><rect x="208" y="592" width="20" height="3" fill="#0C0E10"/><rect x="236" y="584" width="7" height="4" fill="#D2A63F"/><rect x="250" y="584" width="7" height="4" fill="#D2A63F"/><rect x="236" y="592" width="26" height="3" fill="#D9D3C2"/>
+              <rect x="326" y="650" width="204" height="4" fill="#000" opacity="0.22"/><rect x="320" y="634" width="207" height="9" fill="#C3CBD0"/><rect x="320" y="643" width="207" height="4" fill="#8B949A"/><rect x="326" y="647" width="8" height="5" fill="#8B949A"/><rect x="350" y="647" width="8" height="4" fill="#8B949A"/><rect x="410" y="628" width="48" height="16" fill="#2D3236"/><rect x="410" y="644" width="48" height="5" fill="#16191B"/><rect x="416" y="632" width="34" height="8" fill="#6FD08C"/>
+        </svg>
+        <div class="puff p1"></div>
+        <div class="puff p2"></div>
+
+        <!-- Monitor. Inert (not focusable) until the camera has zoomed in. -->
+        <div id="monitor" inert>
+          <div id="screen">
+            <div id="power-line" aria-hidden="true"></div>
+            <div id="desktop" class="wall">
+
+              <div id="desk-icons">
+                <button type="button" class="desk-icon" data-open="who-am-i"><svg aria-hidden="true" width="40" height="40" viewBox="0 0 16 16" shape-rendering="crispEdges"><rect x="5" y="1" width="6" height="6" fill="#F0C8A0"/><rect x="3" y="8" width="10" height="7" fill="#2F6C8E"/><rect x="5" y="1" width="6" height="2" fill="#2B2B2B"/></svg>Who Am I</button>
+                <button type="button" class="desk-icon" data-open="experiences"><svg aria-hidden="true" width="40" height="40" viewBox="0 0 16 16" shape-rendering="crispEdges"><rect x="1" y="5" width="14" height="9" fill="#8B5A2B"/><rect x="5" y="2" width="6" height="3" fill="#5C3A1C"/><rect x="7" y="8" width="2" height="2" fill="#E8D08A"/></svg>Experiences</button>
+                <button type="button" class="desk-icon" data-open="projects"><svg aria-hidden="true" width="40" height="40" viewBox="0 0 16 16" shape-rendering="crispEdges"><rect x="1" y="3" width="6" height="2" fill="#D9B34A"/><rect x="1" y="5" width="14" height="9" fill="#F2D06B"/></svg>Projects</button>
+                <button type="button" class="desk-icon" data-open="teep-honors"><svg aria-hidden="true" width="40" height="40" viewBox="0 0 16 16" shape-rendering="crispEdges"><rect x="3" y="1" width="10" height="7" fill="#E8C24A"/><rect x="5" y="8" width="6" height="3" fill="#C49A2E"/><rect x="3" y="11" width="10" height="3" fill="#7B4B21"/></svg>TEEP &amp; Honors</button>
+                <button type="button" class="desk-icon" data-open="publications"><svg aria-hidden="true" width="40" height="40" viewBox="0 0 16 16" shape-rendering="crispEdges"><rect x="3" y="1" width="10" height="14" fill="#F5F5F5"/><rect x="5" y="4" width="6" height="1" fill="#00007B"/><rect x="5" y="7" width="6" height="1" fill="#555"/><rect x="5" y="10" width="6" height="1" fill="#555"/></svg>Publications</button>
+                <button type="button" class="desk-icon" data-open="system-specs"><svg aria-hidden="true" width="40" height="40" viewBox="0 0 16 16" shape-rendering="crispEdges"><rect x="2" y="2" width="12" height="9" fill="#CFC8B6"/><rect x="3" y="3" width="10" height="7" fill="#00007B"/><rect x="5" y="11" width="6" height="2" fill="#8E8775"/><rect x="3" y="13" width="10" height="2" fill="#CFC8B6"/></svg>System Specs</button>
+                <button type="button" class="desk-icon" data-open="resume"><svg aria-hidden="true" width="40" height="40" viewBox="0 0 16 16" shape-rendering="crispEdges"><rect x="3" y="1" width="10" height="14" fill="#F5F5F5"/><rect x="3" y="11" width="10" height="4" fill="#B3261E"/><rect x="5" y="4" width="6" height="1" fill="#555"/><rect x="5" y="7" width="6" height="1" fill="#555"/></svg>Resume.pdf</button>
+                <button type="button" class="desk-icon" data-open="contact"><svg aria-hidden="true" width="40" height="40" viewBox="0 0 16 16" shape-rendering="crispEdges"><rect x="1" y="3" width="14" height="10" fill="#F5F5F5"/><rect x="2" y="4" width="2" height="2" fill="#7B7B7B"/><rect x="4" y="6" width="2" height="2" fill="#7B7B7B"/><rect x="6" y="8" width="4" height="2" fill="#7B7B7B"/><rect x="10" y="6" width="2" height="2" fill="#7B7B7B"/><rect x="12" y="4" width="2" height="2" fill="#7B7B7B"/></svg>Contact</button>
+              </div>
+
+              <!-- windows.js adds .win sections here -->
+
+              <div id="menu" class="out" hidden></div>
+              <div id="taskbar" class="out">
+                <button type="button" id="menu-btn" class="out" aria-expanded="false" aria-controls="menu">G.A. Menu</button>
+                <div id="tasks"></div>
+                <span id="clock" class="in"></span>
+              </div>
+              <div id="scanlines" aria-hidden="true"></div>
+            </div>
+          </div>
+          <div id="chin">
+            <div class="vent"></div>
+            <div class="pwr-wrap"><span id="led"></span><button type="button" id="pwr" class="out" aria-label="Power" aria-pressed="true">PWR</button></div>
+          </div>
+        </div>
+
+        <button type="button" id="pc-hit" class="glow" aria-label="Click the PC"></button>
+        <div id="pc-label" aria-hidden="true">Click the PC</div>
+      </div>
+    </div>
+  </div>
 </div>
+<button type="button" id="back-btn">Back to desk</button>
 
-<section id="home" class="hero">
-  <div class="hero-photo-wrap">
-    <img src="images/profile-picture.png" alt="Guillaume Arenas">
+<!-- ============ PHONE SHELL (760px or narrower, or coarse pointer) ============ -->
+<main id="phone">
+  <div class="ph-wall wall">
+    <h1>GUILLAUME ARENAS</h1>
+    <p>Data Science + ML intern, Jan 2027</p>
+    <ul class="ph-grid">
+      <li><a class="ph-tile" href="#who-am-i" data-open="who-am-i">Who Am I</a></li>
+      <li><a class="ph-tile" href="#experiences" data-open="experiences">Experiences</a></li>
+      <li><a class="ph-tile" href="#projects" data-open="projects">Projects</a></li>
+      <li><a class="ph-tile" href="#teep-honors" data-open="teep-honors">TEEP &amp; Honors</a></li>
+      <li><a class="ph-tile" href="#publications" data-open="publications">Publications</a></li>
+      <li><a class="ph-tile" href="#system-specs" data-open="system-specs">System Specs</a></li>
+      <li><a class="ph-tile" href="#resume" data-open="resume">Resume.pdf</a></li>
+      <li><a class="ph-tile" href="#contact" data-open="contact">Contact</a></li>
+    </ul>
   </div>
-  <div class="hero-copy">
-    <div class="hero-greeting">Hi, I'm</div>
-    <h1 class="hero-name">Guillaume Arenas</h1>
-    <p class="hero-desc">MS Manufacturing Engineering &amp; Management student building at the intersection of hardware, data, and machine learning, from computer-vision testing rigs to applied ML pipelines.</p>
-    <div class="hero-actions">
-      <a href="#projects" class="btn-pill">View Projects</a>
-      <a href="resume.pdf" download="Guillaume_Arenas_Resume.pdf" class="btn-outline">Download Resume</a>
+  <section id="ph-win" class="out" role="dialog" aria-modal="true" aria-labelledby="ph-title" hidden>
+    <div class="ph-bar"><span id="ph-title"></span><button type="button" id="ph-close" class="out" aria-label="Close and go back">X</button></div>
+    <div id="ph-body" class="in"></div>
+  </section>
+</main>
+
+<!--
+  WINDOW CONTENT (Phase 2 edits only this section, no JS changes needed).
+  Each <template data-window="ROUTE" data-title="Title" data-size="WxH"> becomes a window.
+  ROUTE is also the hash (#ROUTE). data-size is optional (default 490x400).
+  Any element with data-open="ROUTE" opens that window when clicked.
+  Add data-hash="none" to a template if it should not be a hash route.
+  Helper classes (.rt-h1, .rt-grid-2, .rt-photo, ...) are in css/retro.css.
+-->
+
+<template data-window="who-am-i" data-title="Who Am I">
+  <div class="rt-profile">
+    <img class="rt-portrait" src="images/profile-picture.png" alt="Portrait of Guillaume Arenas" loading="lazy">
+    <div>
+      <h2 class="rt-h1">GUILLAUME.EXE</h2>
+      <div>USER: Guillaume Arenas</div>
+      <div>LOCATION: Cainta, Rizal, PH</div>
+      <div>STATUS: Open to internships, Jan 2027</div>
     </div>
   </div>
-</section>
+  <div>SEEKING: Data Science and ML Engineering roles</div>
+  <div>SPECIALTY: ML on real physical systems</div>
+  <div>DEGREE: BS/MS Manufacturing Engineering and Management, De La Salle University (Expected 2027)</div>
+  <div class="rt-gap">OFFLINE MODE: Football, travel, photography</div>
+  <div class="rt-grid-2">
+    <figure class="rt-fig"><img class="rt-photo" style="object-position:50% 75%" src="images/about/football.jpg" alt="Guillaume with a football team after a match" loading="lazy"></figure>
+    <figure class="rt-fig"><img class="rt-photo" style="object-position:50% 60%" src="images/about/travel-1.jpg" alt="Stained-glass dome in a station" loading="lazy"></figure>
+    <figure class="rt-fig"><img class="rt-photo" style="object-position:50% 90%" src="images/about/travel-2.jpg" alt="Guillaume and friends in a forest" loading="lazy"></figure>
+    <figure class="rt-fig"><img class="rt-photo" style="object-position:50% 31%" src="images/about/travel-3.jpg" alt="Pagoda with cherry blossoms" loading="lazy"></figure>
+  </div>
+</template>
 
-<section class="exp-section">
-  <div class="exp-section-inner">
-    <h2 class="section-heading">Experience &amp; Education</h2>
-    <div class="exp-tabs">
-      <div class="exp-slider" id="expSlider"></div>
-      <button class="exp-tab active" id="workTab" data-tab="work">Experience</button>
-      <button class="exp-tab" id="studiesTab" data-tab="studies">Studies</button>
-    </div>
+<template data-window="experiences" data-title="Experiences">
+  <h2 class="rt-h2">Graduate Research Assistant</h2>
+  <div>National Chin-Yi University of Technology, Taichung, Taiwan</div>
+  <div class="rt-note rt-gap">Aug – Dec 2025 · May – Jul 2026</div>
+  <ul class="rt-gap">
+    <li>Built a mechanoluminescent elastomer grid prototype and a Python pipeline that turns video trials into light-intensity features.</li>
+    <li>Co-authored a paper in IEEE ICCT-Pacific 2026.</li>
+    <li>Designed a wrist-conforming sensor housing and built a low-cost automated 3-axis testing rig with marker tracking.</li>
+  </ul>
+  <h2 class="rt-h2">Senior Officer</h2>
+  <div>Society of Manufacturing Engineers, DLSU Chapter</div>
+  <div class="rt-note rt-gap">2024 – 2025</div>
+  <p>Helped organize events for the DLSU Department of Biomedical, Mechatronics, and Robotics Engineering. Documented plant visits in Osaka, Japan for 40+ students and curated 300+ photos into promotional material.</p>
+</template>
 
-    <div class="exp-card active" id="workCard">
-      <div class="exp-logo">
-        <img src="images/ncut-logo.svg" alt="National Chin-Yi University of Technology logo">
+<template data-window="projects" data-title="Projects">
+  <div class="rt-folder">
+    <button type="button" class="rt-doc" data-open="projects/gripvt"><svg aria-hidden="true" width="36" height="36" viewBox="0 0 16 16" shape-rendering="crispEdges"><rect x="3" y="1" width="10" height="14" fill="#F5F5F5" stroke="#000" stroke-width="1"/><rect x="5" y="4" width="6" height="1" fill="#00007B"/><rect x="5" y="7" width="6" height="1" fill="#555"/><rect x="5" y="10" width="4" height="1" fill="#555"/></svg>GripVT</button>
+    <button type="button" class="rt-doc" data-open="projects/testing-rig"><svg aria-hidden="true" width="36" height="36" viewBox="0 0 16 16" shape-rendering="crispEdges"><rect x="3" y="1" width="10" height="14" fill="#F5F5F5" stroke="#000" stroke-width="1"/><rect x="5" y="4" width="6" height="1" fill="#00007B"/><rect x="5" y="7" width="6" height="1" fill="#555"/><rect x="5" y="10" width="4" height="1" fill="#555"/></svg>Testing Rig</button>
+    <button type="button" class="rt-doc" data-open="projects/pm25"><svg aria-hidden="true" width="36" height="36" viewBox="0 0 16 16" shape-rendering="crispEdges"><rect x="3" y="1" width="10" height="14" fill="#F5F5F5" stroke="#000" stroke-width="1"/><rect x="5" y="4" width="6" height="1" fill="#00007B"/><rect x="5" y="7" width="6" height="1" fill="#555"/><rect x="5" y="10" width="4" height="1" fill="#555"/></svg>PM2.5 Prediction</button>
+    <button type="button" class="rt-doc" data-open="projects/pcb-defect-detection"><svg aria-hidden="true" width="36" height="36" viewBox="0 0 16 16" shape-rendering="crispEdges"><rect x="3" y="1" width="10" height="14" fill="#F5F5F5" stroke="#000" stroke-width="1"/><rect x="5" y="4" width="6" height="1" fill="#00007B"/><rect x="5" y="7" width="6" height="1" fill="#555"/><rect x="5" y="10" width="4" height="1" fill="#555"/></svg>PCB Defects</button>
+    <button type="button" class="rt-doc" data-open="projects/marker-tracking-pipeline"><svg aria-hidden="true" width="36" height="36" viewBox="0 0 16 16" shape-rendering="crispEdges"><rect x="3" y="1" width="10" height="14" fill="#F5F5F5" stroke="#000" stroke-width="1"/><rect x="5" y="4" width="6" height="1" fill="#00007B"/><rect x="5" y="7" width="6" height="1" fill="#555"/><rect x="5" y="10" width="4" height="1" fill="#555"/></svg>Marker Tracking</button>
+    <button type="button" class="rt-doc" data-open="projects/mechanoluminescent-elastomer"><svg aria-hidden="true" width="36" height="36" viewBox="0 0 16 16" shape-rendering="crispEdges"><rect x="3" y="1" width="10" height="14" fill="#F5F5F5" stroke="#000" stroke-width="1"/><rect x="5" y="4" width="6" height="1" fill="#00007B"/><rect x="5" y="7" width="6" height="1" fill="#555"/><rect x="5" y="10" width="4" height="1" fill="#555"/></svg>Sensing Skin</button>
+    <button type="button" class="rt-doc" data-open="projects/carton-sorting"><svg aria-hidden="true" width="36" height="36" viewBox="0 0 16 16" shape-rendering="crispEdges"><rect x="3" y="1" width="10" height="14" fill="#F5F5F5" stroke="#000" stroke-width="1"/><rect x="5" y="4" width="6" height="1" fill="#00007B"/><rect x="5" y="7" width="6" height="1" fill="#555"/><rect x="5" y="10" width="4" height="1" fill="#555"/></svg>Carton Sorting</button>
+    <button type="button" class="rt-doc" data-open="projects/news-bot"><svg aria-hidden="true" width="36" height="36" viewBox="0 0 16 16" shape-rendering="crispEdges"><rect x="3" y="1" width="10" height="14" fill="#F5F5F5" stroke="#000" stroke-width="1"/><rect x="5" y="4" width="6" height="1" fill="#00007B"/><rect x="5" y="7" width="6" height="1" fill="#555"/><rect x="5" y="10" width="4" height="1" fill="#555"/></svg>News Bot</button>
+  </div>
+</template>
+
+<template data-window="teep-honors" data-title="TEEP &amp; Honors" data-size="540x460">
+  <h2 class="rt-h2">Taiwan Experience Education Program</h2>
+  <p><strong>Stint 1, Aug – Dec 2025:</strong> Built a mechanoluminescent elastomer grid prototype and a Python feature-extraction pipeline. Co-authored a paper in IEEE ICCT-Pacific 2026.</p>
+  <p><strong>Stint 2, May – Jul 2026:</strong> Designed a wrist-conforming sensor housing and built a low-cost 3-axis testing rig with marker tracking to screen 4 silicone elastomer blends.</p>
+  <div class="rt-grid-3 rt-gap">
+    <figure class="rt-fig"><img class="rt-photo" style="object-position:50% 82%" src="images/teep/teep-1.jpg" alt="Guillaume at the NCUT campus sign" loading="lazy"><figcaption>NCUT campus sign</figcaption></figure>
+    <figure class="rt-fig"><img class="rt-photo" style="object-position:50% 70%" src="images/teep/teep-2.jpg" alt="Campus building in Taiwan" loading="lazy"><figcaption>Campus building</figcaption></figure>
+    <figure class="rt-fig"><img class="rt-photo" style="object-position:50% 0%" src="images/teep/teep-3.jpg" alt="Laptop showing the live marker camera feed from a sensor" loading="lazy"><figcaption>Live marker camera feed</figcaption></figure>
+  </div>
+  <h2 class="rt-h2">Honors</h2>
+  <ul>
+    <li>DOST-Merit Scholar, undergraduate degree, 2021 – 2024</li>
+    <li>ERDT Scholar, master's degree, 2024 – 2026</li>
+    <li>Candidate for Cum Laude, CGPA 3.58/4.00</li>
+  </ul>
+</template>
+
+<template data-window="publications" data-title="Publications" data-size="540x460">
+  <p class="rt-note">Click the link to view the paper.</p>
+  <ol class="rt-pubs">
+    <li><a href="https://doi.org/10.1109/ICCT-Pacific69083.2026.11519013" target="_blank" rel="noopener">Preliminary Evaluation of Mechanoluminescent Lattice-Patterned Sensing Skin for Visuotactile Contact Differentiation</a><br>IEEE ICCT-Pacific 2026</li>
+    <li><a href="https://doi.org/10.1109/TENCON61640.2024.10902913" target="_blank" rel="noopener">Printed Circuit Board Defect Detection Using YOLOv8s and TensorRT</a><br>IEEE TENCON 2024</li>
+    <li>An Initial Low-Cost Characterization Framework for Marker-based Visuotactile Sensors<br>VTCA 2026. Accepted. Presentation on Nov 25, 2026.</li>
+    <li>GripVT: Non-Invasive Grip Force Estimation via Visuotactile Sensing of Volar Forearm Surface Deformation<br>IEEE Sensors Journal. Under review.</li>
+  </ol>
+</template>
+
+<template data-window="system-specs" data-title="System Specs">
+  <div class="rt-kv">
+    <div>LANGUAGES</div><div>Python, C++, SQL, MATLAB</div>
+    <div>DATA</div><div>Pandas, NumPy, EDA, statistical analysis</div>
+    <div>ML</div><div>scikit-learn, TensorFlow/Keras, XGBoost, LightGBM, Ridge, Optuna</div>
+    <div>VISION + NLP</div><div>YOLO, OpenCV, MediaPipe, Hugging Face (BART)</div>
+    <div>TOOLS</div><div>Git, GitHub Actions, Jupyter, pytest, CustomTkinter, Matplotlib, Seaborn</div>
+    <div>AI TOOLS</div><div>Claude Code, prompt engineering, LLM API integration</div>
+    <div>GOOGLE SUITE</div><div>Docs, Sheets, Slides</div>
+    <div>MICROSOFT OFFICE</div><div>Word, Excel, PowerPoint</div>
+  </div>
+</template>
+
+<template data-window="resume" data-title="Resume.pdf" data-size="540x460">
+  <div class="rt-resume">
+    <iframe class="rt-pdf rt-pdf-desktop in" src="resume.pdf#toolbar=0&navpanes=0" title="Resume PDF" loading="lazy"></iframe>
+    <div class="rt-resume-phone">
+      <p>Resume of Guillaume Arenas (PDF).</p>
+      <div class="rt-links">
+        <a class="rt-btn out" href="resume.pdf" target="_blank" rel="noopener">Open</a>
+        <a class="rt-btn out" href="resume.pdf" download="Guillaume_Arenas_Resume.pdf">Download</a>
       </div>
-      <div class="exp-body">
-        <div class="exp-dates">Aug 2025 – Dec 2025 · May 2026 – Jul 2026</div>
-        <div class="exp-title">Graduate Research Assistant</div>
-        <div class="exp-sub">National Chin-Yi University of Technology, Taichung, Taiwan</div>
-        <div class="exp-desc">Sensor hardware prototyping + embedded CV/ML pipelines for visuotactile research.</div>
-      </div>
     </div>
-    <div class="exp-card" id="studiesCard">
-      <div class="exp-logo">
-        <img src="images/dlsu-logo.png" alt="De La Salle University logo">
-      </div>
-      <div class="exp-body">
-        <div class="exp-dates">2021 – Expected 2027</div>
-        <div class="exp-title">De La Salle University</div>
-        <div class="exp-sub">B.S./M.S. in Manufacturing Engineering and Management</div>
-        <div class="exp-desc">CGPA 3.58/4.00, Cum Laude candidate · DOST &amp; ERDT Scholar</div>
-      </div>
-    </div>
+    <div class="rt-pdf-desktop"><a class="rt-btn out" href="resume.pdf" download="Guillaume_Arenas_Resume.pdf">Download Resume.pdf</a></div>
   </div>
-</section>
+</template>
 
-<section id="projects" class="projects-section">
-  <div class="projects-section-inner">
-    <h2 class="section-heading">Projects</h2>
-    <p class="projects-lede">Feel free to explore anything!</p>
-    <div class="projects-grid">
-
-      <a href="gripvt.html" class="project-card">
-        <div class="project-card-media">
-          <img src="images/gripvt.png" alt="GripVT screenshot">
-        </div>
-        <div class="project-card-body">
-          <div class="project-card-title">GripVT</div>
-          <p class="project-card-blurb">A wearable, camera-based sensor that estimates hand grip force from how a silicone skin deforms from anterior forearm skin changes. </p>
-          <div class="project-tags">
-            <span class="project-tag">Python</span>
-            <span class="project-tag">OpenCV</span>
-            <span class="project-tag">Scikit-Learn</span>
-          </div>
-        </div>
-      </a>
-
-      <a href="testing-rig.html" class="project-card">
-        <div class="project-card-media">
-          <img src="images/testing-rig-screenshot.jpg" alt="Low-Cost Automated Visuotactile Sensor Testing Rig screenshot">
-        </div>
-        <div class="project-card-body">
-          <div class="project-card-title">Low-Cost Automated Visuotactile Sensor Testing Rig</div>
-          <p class="project-card-blurb">A ~$250 automated test bench for characterizing soft sensor materials, replacing $10,000–$14,000 industrial robotic rigs.</p>
-          <div class="project-tags">
-            <span class="project-tag">Python</span>
-            <span class="project-tag">OpenCV</span>
-            <span class="project-tag">SciPy</span>
-            <span class="project-tag">G-code</span>
-            <span class="project-tag">Pandas</span>
-          </div>
-        </div>
-      </a>
-
-      <a href="pcb-defect-detection.html" class="project-card">
-        <div class="project-card-media">
-          <img src="images/pcb-defect-samples.png" alt="Six defect types: missing hole, mouse bite, open circuit, short, spur, spurious copper">
-        </div>
-        <div class="project-card-body">
-          <div class="project-card-title">PCB Defect Detection</div>
-          <p class="project-card-blurb">A YOLOv8-based defect detector for printed circuit boards, tuned with TensorRT for real-time inspection.</p>
-          <div class="project-tags">
-            <span class="project-tag">Python</span>
-            <span class="project-tag">YOLOv8</span>
-            <span class="project-tag">TensorRT</span>
-            <span class="project-tag">Roboflow</span>
-            <span class="project-tag">OpenCV</span>
-          </div>
-        </div>
-      </a>
-
-      <a href="mechanoluminescent-elastomer.html" class="project-card">
-        <div class="project-card-media">
-          <img src="images/mechano-sensing-skin.jpeg" alt="Fabricated mechanoluminescent lattice skin">
-        </div>
-        <div class="project-card-body">
-          <div class="project-card-title">Mechanoluminescent Sensing Skin</div>
-          <p class="project-card-blurb">A light-emitting silicone lattice for visuotactile sensing, with signal extraction and image processing for contact differentiation.</p>
-          <div class="project-tags">
-            <span class="project-tag">Python</span>
-            <span class="project-tag">OpenCV</span>
-            <span class="project-tag">Signal Processing</span>
-            <span class="project-tag">Image Processing</span>
-          </div>
-        </div>
-      </a>
-
-      <a href="marker-tracking-pipeline.html" class="project-card">
-        <div class="project-card-media">
-          <img src="images/marker-tracking-demo.gif" alt="Live detector calibration view tracking all 99 markers in real time">
-        </div>
-        <div class="project-card-body">
-          <div class="project-card-title">Marker Tracking Pipeline</div>
-          <p class="project-card-blurb">A sub-pixel marker detection and tracking pipeline for a visuotactile sensor, built on Gaussian fitting and Kalman filtering.</p>
-          <div class="project-tags">
-            <span class="project-tag">Python</span>
-            <span class="project-tag">OpenCV</span>
-            <span class="project-tag">NumPy</span>
-            <span class="project-tag">SciPy</span>
-            <span class="project-tag">Kalman Filtering</span>
-          </div>
-        </div>
-      </a>
-
-      <a href="carton-sorting.html" class="project-card">
-        <div class="project-card-media">
-          <img src="images/carton-hole-detection.png" alt="Live detection with a bounding box drawn around a carton with a hole">
-        </div>
-        <div class="project-card-body">
-          <div class="project-card-title">Carton Defect Sorting</div>
-          <p class="project-card-blurb">An automated carton inspection and sorting line using a YOLO11n model, an ESP32 camera, and a servo actuator.</p>
-          <div class="project-tags">
-            <span class="project-tag">Python</span>
-            <span class="project-tag">YOLO11n</span>
-            <span class="project-tag">OpenCV</span>
-            <span class="project-tag">Arduino</span>
-            <span class="project-tag">ESP32-CAM</span>
-          </div>
-        </div>
-      </a>
-
-    </div>
+<template data-window="contact" data-title="Contact">
+  <p>Open to Data Science and ML Engineering internships from January 2027.</p>
+  <div class="rt-links" style="flex-direction:column;align-items:flex-start">
+    <a href="mailto:guillaume.arenas0712@gmail.com">guillaume.arenas0712@gmail.com</a>
+    <a href="https://www.linkedin.com/in/guillaumearenas/" target="_blank" rel="noopener">LinkedIn</a>
+    <a href="https://github.com/gkuarenas" target="_blank" rel="noopener">GitHub</a>
   </div>
-</section>
+</template>
 
-<section id="contact" class="contact-section">
-  <div class="contact-section-inner">
-    <h2 class="section-heading">Let's Connect</h2>
-    <p class="contact-lede">Open to internships and research collaborations across manufacturing, hardware, and applied ML. Reach out anytime.</p>
-    <div class="social-links">
-      <a href="https://www.linkedin.com/in/guillaumearenas/" target="_blank" rel="noopener" aria-label="LinkedIn" class="social-link">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
-      </a>
-      <a href="https://github.com/gkuarenas" target="_blank" rel="noopener" aria-label="GitHub" class="social-link">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-4.3 1.4-4.3-2.5-6-3m12 5v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6a4.6 4.6 0 0 0-1.3-3.2 4.2 4.2 0 0 0-.1-3.2s-1.1-.3-3.5 1.3a12.3 12.3 0 0 0-6.2 0C6.5 2.8 5.4 3.1 5.4 3.1a4.2 4.2 0 0 0-.1 3.2A4.6 4.6 0 0 0 4 9.5c0 4.6 2.7 5.7 5.5 6-.6.6-.6 1.2-.5 2V21"></path></svg>
-      </a>
-      <a href="mailto:guillaume.arenas0712@gmail.com" aria-label="Email" class="social-link">@</a>
-    </div>
-    <a href="resume.pdf" download="Guillaume_Arenas_Resume.pdf" class="btn-pill">Download Resume</a>
+<!-- Projects: one template per slug. -->
+<template data-window="projects/gripvt" data-title="GripVT" data-size="540x460">
+  <h2 class="rt-h1">GripVT</h2>
+  <p class="rt-note">Master's thesis, May 2026 – present. Under review at IEEE Sensors Journal.</p>
+  <p>A wearable, camera-based sensor that estimates hand grip force from how a silicone skin deforms on the forearm.</p>
+  <figure class="rt-fig"><img src="images/gripvt.png" alt="GripVT sensor" loading="lazy"><figcaption>The GripVT sensor</figcaption></figure>
+  <h3 class="rt-h2 rt-sec">Problem</h3>
+  <p>Grip strength is a standard clinical measure, but no non-invasive method captures the forearm deformation that produces it. Dynamometers give one force number, EMG needs careful setup and drifts with fatigue, and pressure gloves restrict motion. Visuotactile sensing works for object contact, but had not been tested on human skin driven by muscle.</p>
+  <h3 class="rt-h2 rt-sec">Method</h3>
+  <ul>
+    <li>Mold a soft silicone skin with a 99-marker grid and wear it over the forearm.</li>
+    <li>Track marker displacement with a camera as the wearer grips (Kalman filter and Hungarian assignment).</li>
+    <li>Predict grip force with Ridge, XGBoost, and MLP models, compared with leakage-safe nested cross-validation (Optuna, MLflow).</li>
+    <li>Built the data-collection app in Python (CustomTkinter): calibration, live camera feed, and de-identified, crash-safe session storage. 379 tests across 21 files (pytest).</li>
+  </ul>
+  <figure class="rt-fig"><img src="images/figure-abstract.png" alt="GripVT graphical abstract: hardware, marker-displacement tracking, and the XGBoost pipeline producing grip-force estimates" loading="lazy"><figcaption>Graphical abstract: hardware, marker tracking, and the model pipeline</figcaption></figure>
+  <figure class="rt-fig"><img src="images/gripvt-exploded.png" alt="Exploded view of the GripVT sensor" loading="lazy"><figcaption>Exploded view</figcaption></figure>
+  <figure class="rt-fig"><img src="images/software.png" alt="GripVT data collection software" loading="lazy"><figcaption>Data collection software</figcaption></figure>
+  <figure class="rt-fig"><img src="images/gripvt-forearm.jpg" alt="GripVT worn on the forearm" loading="lazy"><figcaption>Worn on the forearm</figcaption></figure>
+  <figure class="rt-fig"><img src="images/Figure-4.23.png" alt="Marker detection: raw grid vs. tracked markers" loading="lazy"><figcaption>Marker detection: raw grid and tracked markers</figcaption></figure>
+  <h3 class="rt-h2 rt-sec">Result</h3>
+  <p>Grip force predicted to within ~6% of a wearer's maximum strength for returning wearers and ~9% for new wearers, on 98 sessions from 10 participants.</p>
+  <p class="rt-tools">TOOLS: Python, OpenCV, scikit-learn</p>
+  <div class="rt-links">
+    <a class="rt-btn out" href="https://github.com/gkuarenas/GripVT" target="_blank" rel="noopener">GitHub repo</a>
+    <button type="button" class="rt-btn out" data-open="manuscript">Request the manuscript</button>
   </div>
-</section>
+</template>
+<template data-window="projects/testing-rig" data-title="Testing Rig" data-size="540x460">
+  <h2 class="rt-h1">Testing Rig</h2>
+  <p class="rt-note">May – Jun 2026. Accepted at VTCA 2026.</p>
+  <p>A low-cost automated test bench for characterizing soft sensor materials.</p>
+  <figure class="rt-fig"><img src="images/ender-3-rig.png" alt="Full testing rig, labeled" loading="lazy"><figcaption>The full rig, labeled</figcaption></figure>
+  <h3 class="rt-h2 rt-sec">Problem</h3>
+  <p>Published protocols for visuotactile sensors use industrial robotic arms that cost $10,000 – $14,000 per rig. The manual fallback, a force gauge, takes an estimated 25 hours per specimen because there is no automated depth control or synchronized force and position logging.</p>
+  <h3 class="rt-h2 rt-sec">Method</h3>
+  <ul>
+    <li>Retrofit an Ender 3 3D printer with a load cell and a camera (about $250 total).</li>
+    <li>Track 150+ markers per frame at ~30 FPS with OpenCV, Kalman filtering, and Hungarian assignment.</li>
+    <li>Run calibration, testing, and logging unattended: self-calibrating depth search, safety interlocks, and crash-safe resumable sessions.</li>
+    <li>Compare 4 silicone elastomer blends with one-way ANOVA and Tukey HSD.</li>
+  </ul>
+  <figure class="rt-fig"><img src="images/testing-rig-screenshot.jpg" alt="Indentation close-up" loading="lazy"><figcaption>Indentation close-up</figcaption></figure>
+  <figure class="rt-fig"><img src="images/software-low-cost-testing-rig.png" alt="Testing rig control software" loading="lazy"><figcaption>Control software</figcaption></figure>
+  <figure class="rt-fig"><img src="images/testing-rig-sensitivity-results.png" alt="Sensitivity results" loading="lazy"><figcaption>Sensitivity results</figcaption></figure>
+  <figure class="rt-fig"><img src="images/v2-hysteresis-loops-multispeed.svg" alt="Hysteresis loops at several speeds" loading="lazy"><figcaption>Hysteresis loops</figcaption></figure>
+  <h3 class="rt-h2 rt-sec">Result</h3>
+  <ul>
+    <li>About 98% cheaper than the $10,000 – $14,000 commercial systems.</li>
+    <li>About 90% less time, roughly 10x faster than the manual method.</li>
+    <li>1.6M+ structured measurements per run.</li>
+    <li>One blend came out statistically dominant (p&lt;0.001), which gave a data-driven material recommendation.</li>
+  </ul>
+  <p class="rt-tools">TOOLS: Python, OpenCV, SciPy, Pandas, G-code</p>
+  <div class="rt-links">
+    <a class="rt-btn out" href="https://github.com/gkuarenas/visuotactile-eval" target="_blank" rel="noopener">GitHub repo</a>
+  </div>
+</template>
+<template data-window="projects/pm25" data-title="PM2.5 Prediction" data-size="540x460">
+  <h2 class="rt-h1">PM2.5 Prediction</h2>
+  <p class="rt-note">DLSU Capstone, Jan – Dec 2024. Team lead of 4.</p>
+  <svg class="rt-chart in" aria-hidden="true" viewBox="0 0 48 16" shape-rendering="crispEdges" preserveAspectRatio="xMidYMid meet"><rect x="4" y="13" width="40" height="1" fill="#555"/><rect x="4" y="2" width="1" height="12" fill="#555"/><rect x="7" y="9" width="4" height="4" fill="#007B7B"/><rect x="13" y="6" width="4" height="7" fill="#007B7B"/><rect x="19" y="8" width="4" height="5" fill="#007B7B"/><rect x="25" y="3" width="4" height="10" fill="#00007B"/><rect x="31" y="5" width="4" height="8" fill="#007B7B"/><rect x="37" y="7" width="4" height="6" fill="#007B7B"/></svg>
+  <h3 class="rt-h2 rt-sec">Problem</h3>
+  <p>Predict PM2.5 and PM10 air-pollution levels in the National Capital Region from historical records and map-based features.</p>
+  <h3 class="rt-h2 rt-sec">Method</h3>
+  <ul>
+    <li>Compiled and cleaned 11 years (2013 – 2023) of PM2.5 and PM10 records into a model-ready dataset of 383 samples. Coordinated with 17 NCR local government units and DENR-EMB.</li>
+    <li>Computed road density from OpenStreetMap GIS data.</li>
+    <li>Tuned 4 models (MLP, Random Forest, LightGBM, and a stacked RF-LightGBM ensemble) with RandomizedSearchCV across 2 feature configurations.</li>
+    <li>Compared them on 5 metrics: RMSE, MAE, MAPE, MSLE, and R2.</li>
+  </ul>
+  <h3 class="rt-h2 rt-sec">Result</h3>
+  <p>Presented the findings to a faculty panel and earned a 4.0/4.0 grade.</p>
+  <p class="rt-tools">TOOLS: Python, scikit-learn, LightGBM, OpenStreetMap GIS data</p>
+</template>
+<template data-window="projects/pcb-defect-detection" data-title="PCB Defects" data-size="540x460">
+  <h2 class="rt-h1">PCB Defects</h2>
+  <p class="rt-note">Oct – Dec 2023. Published, IEEE TENCON 2024.</p>
+  <p>A YOLOv8-based defect detector for printed circuit boards, sped up with TensorRT. I was first author and student team lead: dataset preparation, augmentation, training, testing, evaluation, and writing.</p>
+  <figure class="rt-fig"><img src="images/pcb-defect-samples.png" alt="Six defect types: missing hole, mouse bite, open circuit, short, spur, spurious copper" loading="lazy"><figcaption>Six defect types: missing hole, mouse bite, open circuit, short, spur, spurious copper</figcaption></figure>
+  <h3 class="rt-h2 rt-sec">Problem</h3>
+  <p>Manual visual inspection of PCBs is slow and inconsistent, and it does not scale with production volume. Template-based automated inspection needs a stored reference per board design and breaks down when lighting or alignment changes. Both struggle with small, varied defects.</p>
+  <h3 class="rt-h2 rt-sec">Method</h3>
+  <ul>
+    <li>Build an augmented training set covering six defect types.</li>
+    <li>Train a YOLOv8s detector on it.</li>
+    <li>Convert the trained model to TensorRT so it runs fast enough for real-time inspection.</li>
+  </ul>
+  <h3 class="rt-h2 rt-sec">Result</h3>
+  <div class="rt-table-wrap"><table class="rt-table">
+    <thead><tr><th>Model</th><th>mAP50</th><th>Inference</th><th>Size</th></tr></thead>
+    <tbody>
+      <tr><td>YOLOv8s</td><td>98.6%</td><td>7.6 ms</td><td>87.5 MB</td></tr>
+      <tr><td>YOLOv8s + TensorRT</td><td>98.5%</td><td>6.7 ms</td><td>53.1 MB</td></tr>
+    </tbody>
+  </table></div>
+  <p>TensorRT lost only 0.1% mAP50, cut inference time by about 0.9 ms, and shrank the model by about 39.3%.</p>
+  <p class="rt-tools">TOOLS: Python, YOLOv8, TensorRT, Roboflow, OpenCV</p>
+  <div class="rt-links">
+    <a class="rt-btn out" href="https://doi.org/10.1109/TENCON61640.2024.10902913" target="_blank" rel="noopener">View paper</a>
+  </div>
+</template>
+<template data-window="projects/marker-tracking-pipeline" data-title="Marker Tracking" data-size="540x460">
+  <h2 class="rt-h1">Marker Tracking</h2>
+  <p class="rt-note">Part of GripVT. Graduate research at NCUT, under my master's thesis.</p>
+  <p>A sub-pixel marker detection and tracking pipeline for a 9×11, 99-marker visuotactile sensor array.</p>
+  <figure class="rt-fig"><img src="images/marker-tracking-demo.gif" alt="Live detector calibration view tracking all 99 markers in real time" loading="lazy"><figcaption>Live calibration view tracking all 99 markers</figcaption></figure>
+  <h3 class="rt-h2 rt-sec">Problem</h3>
+  <p>GripVT reads grip force from how the marker band deforms. The pipeline must find each of the 99 markers' position and size in every frame, precisely enough to catch a small muscle bulge at a light grip. The band is worn and removed between sessions, so lighting and marker position shift each time.</p>
+  <h3 class="rt-h2 rt-sec">Method</h3>
+  <ul>
+    <li>Undistort and rotate each frame, then crop, denoise, flatten illumination, and binarize to isolate candidate marker blobs.</li>
+    <li>Fit a closed-form 2D Gaussian to each blob (Caruana log-parabola method) for a sub-pixel center and size, with no threshold to tune. Fall back to the blob centroid and area when a fit is invalid.</li>
+    <li>Lock each marker's identity and start position from a 15-frame median baseline.</li>
+    <li>Track every marker frame to frame with a Kalman filter and gated Hungarian assignment. The gate can reject a match, so a missing or stray detection does not corrupt a neighbor.</li>
+  </ul>
+  <figure class="rt-fig"><img src="images/marker-pipeline-diagram.png" alt="Pipeline stages: input frame, undistortion, preprocessing, detection, identity assignment, and displacement output" loading="lazy"><figcaption>Pipeline stages</figcaption></figure>
+  <figure class="rt-fig"><img src="images/Figure-4.25.png" alt="All 99 markers detected across relaxed, full open, and max grip states" loading="lazy"><figcaption>All 99 markers detected in relaxed, full open, and max grip states</figcaption></figure>
+  <h3 class="rt-h2 rt-sec">Result</h3>
+  <ul>
+    <li>Throughput raised from 12.9 to 26.7 fps.</li>
+    <li>Sub-pixel position and threshold-free size for all 99 markers in every frame.</li>
+    <li>Used on real GripVT sessions, where detector self-calibration passed on the first attempt.</li>
+  </ul>
+  <p class="rt-tools">TOOLS: Python, OpenCV, NumPy, SciPy</p>
+  <div class="rt-links">
+    <a class="rt-btn out" href="https://github.com/gkuarenas/GripVT" target="_blank" rel="noopener">GitHub repo</a>
+  </div>
+</template>
+<template data-window="projects/mechanoluminescent-elastomer" data-title="Sensing Skin" data-size="540x460">
+  <h2 class="rt-h1">Sensing Skin</h2>
+  <p class="rt-note">Published, IEEE ICCT-Pacific 2026. Mechanoluminescent sensing skin.</p>
+  <p>A light-emitting silicone lattice for visuotactile sensing. I designed the camera module that reads the skin and built the software that extracts its emission signals. The skin itself was designed by the co-author team, credited in the paper.</p>
+  <figure class="rt-fig"><img src="images/mechano-sensing-skin.jpeg" alt="Fabricated mechanoluminescent lattice skin" loading="lazy"><figcaption>Fabricated lattice skin</figcaption></figure>
+  <h3 class="rt-h2 rt-sec">Problem</h3>
+  <p>Camera-based visuotactile sensors usually need dedicated lighting or careful optical calibration to read a soft skin's deformation. That adds parts and assembly steps, and it drifts over time from wear or misalignment.</p>
+  <h3 class="rt-h2 rt-sec">Method</h3>
+  <ul>
+    <li>The team molds a 30 × 30 mm silicone lattice embedded with ZnS:Cu,Al phosphor. It emits light where it deforms, so it needs no external light.</li>
+    <li>A black-housing camera module holds the lattice on an acrylic window and records it.</li>
+    <li>Python and OpenCV extract intensity-time signals for two contact modes: normal pressing and shear sliding.</li>
+  </ul>
+  <figure class="rt-fig"><img src="images/mechano-camera-fixture.png" alt="Black-housing camera fixture that reads the sensing skin" loading="lazy"><figcaption>Black-housing camera fixture</figcaption></figure>
+  <figure class="rt-fig"><img src="images/mechano-emission-pressing.png" alt="Localized green emission spots on the lattice during normal pressing" loading="lazy"><figcaption>Pressing: localized emission spots</figcaption></figure>
+  <figure class="rt-fig"><img src="images/mechano-emission-shear.png" alt="Elongated green emission streak on the lattice during shear sliding" loading="lazy"><figcaption>Shear sliding: elongated emission streak</figcaption></figure>
+  <h3 class="rt-h2 rt-sec">Result</h3>
+  <ul>
+    <li>Pressing and shear gave visibly different emission shapes, confirmed by the extracted intensity-time signals.</li>
+    <li>The lattice told the two contact modes apart with no active lighting and no printed markers.</li>
+    <li>This is a preliminary, qualitative study. Contact forces were applied by hand and not measured.</li>
+  </ul>
+  <p class="rt-tools">TOOLS: Python, OpenCV, signal processing, image processing</p>
+  <div class="rt-links">
+    <a class="rt-btn out" href="https://doi.org/10.1109/ICCT-Pacific69083.2026.11519013" target="_blank" rel="noopener">View paper</a>
+    <a class="rt-btn out" href="https://github.com/gkuarenas/mechanoluminescence-intensity" target="_blank" rel="noopener">GitHub repo</a>
+  </div>
+</template>
+<template data-window="projects/carton-sorting" data-title="Carton Sorting" data-size="540x460">
+  <h2 class="rt-h1">Carton Sorting</h2>
+  <p class="rt-note">Apr 2025.</p>
+  <p>A camera-and-conveyor prototype that detects and sorts defective packaging cartons in real time with a YOLO11n model.</p>
+  <figure class="rt-fig"><img src="images/carton-final-prototype.jpg" alt="Final cardboard-and-acrylic conveyor prototype with camera mount" loading="lazy"><figcaption>Cardboard-and-acrylic conveyor prototype with camera mount</figcaption></figure>
+  <h3 class="rt-h2 rt-sec">Problem</h3>
+  <p>Packaging lines need to catch defective cartons (open, torn, or holed) before they ship. Manual inspection does not scale on a fast line.</p>
+  <h3 class="rt-h2 rt-sec">Method</h3>
+  <ul>
+    <li>Conveyor on a 12V DC motor, an ESP32-CAM for video, an Arduino Uno for control, and a servo and LED for sorting and signaling.</li>
+    <li>170 labeled images across four box conditions (sealed, open, torn, holed), split 70/20/10 and augmented to 510 images.</li>
+    <li>YOLO11n trained on that set. During live inference, a defect call inside the detection zone sends a serial command to the Arduino, which moves the servo and lights the LED.</li>
+  </ul>
+  <figure class="rt-fig"><img src="images/carton-hole-detection.png" alt="Live detection with a bounding box drawn around a carton with a hole" loading="lazy"><figcaption>Live detection of a carton with a hole</figcaption></figure>
+  <figure class="rt-fig"><img src="images/carton-sorting-in-action.png" alt="Blue LED lit on the prototype, signaling a defect call during sorting" loading="lazy"><figcaption>Blue LED lit after a defect call</figcaption></figure>
+  <figure class="rt-fig"><img src="images/carton-confusion-matrix.png" alt="Confusion matrix of the YOLO11n model across box, hole, open, sealed, and torn classes" loading="lazy"><figcaption>Confusion matrix</figcaption></figure>
+  <h3 class="rt-h2 rt-sec">Result</h3>
+  <ul>
+    <li>0.872 precision, 0.948 recall, mAP50 of 0.970 (97.0%), and mAP50-95 of 0.796 across the four classes.</li>
+    <li>Defective boxes were caught and sorted correctly in testing, at about 6 seconds per box end to end. Most of that is a deliberate 5-second LED hold, not model speed.</li>
+    <li>Open boxes were the hardest class. The cardboard frame caused occasional servo stalling.</li>
+  </ul>
+  <p class="rt-tools">TOOLS: Python, YOLO11n, OpenCV, Arduino, ESP32-CAM</p>
+  <div class="rt-links">
+    <a class="rt-btn out" href="https://github.com/gkuarenas/package-defect-sorter-yolo11" target="_blank" rel="noopener">GitHub repo</a>
+  </div>
+</template>
+<template data-window="projects/news-bot" data-title="News Bot" data-size="540x460">
+  <h2 class="rt-h1">News Bot</h2>
+  <p class="rt-note">Apr 2026.</p>
+  <h3 class="rt-h2 rt-sec">Problem</h3>
+  <p>Keeping up with news across several sites takes time. This bot sends a short digest instead.</p>
+  <h3 class="rt-h2 rt-sec">Method</h3>
+  <ul>
+    <li>Scrapes 3 news sources.</li>
+    <li>Summarizes each article through the Hugging Face API (facebook/bart-large-cnn).</li>
+    <li>Delivers the digest on Telegram, scheduled with GitHub Actions cron jobs.</li>
+  </ul>
+  <h3 class="rt-h2 rt-sec">Result</h3>
+  <p>97.7% run uptime and a 90.8% article-summarization success rate across 88 automated runs and 1,500+ articles over 3 months of continuous operation.</p>
+  <p class="rt-tools">TOOLS: Python, Hugging Face API (BART), web scraping, GitHub Actions</p>
+  <div class="rt-links">
+    <a class="rt-btn out" href="https://github.com/gkuarenas/news-summarizer-bot" target="_blank" rel="noopener">Open the GitHub repo</a>
+  </div>
+</template>
 
-<footer class="site-footer">
-  <span>© 2026 Guillaume Arenas</span>
-</footer>
+<!-- GripVT only. Not a hash route; on phone, closing returns to the GripVT window. -->
+<template data-window="manuscript" data-title="Request the Manuscript" data-size="400x440" data-hash="none" data-parent="projects/gripvt">
+  <form class="ms-form" data-project="GripVT" novalidate>
+    <p>Send your details and I will get a message right away. No email needed.</p>
+    <label>Name<input class="in" type="text" name="name" placeholder="Jane Doe" autocomplete="name"></label>
+    <label>Affiliation / Institution<input class="in" type="text" name="affiliation" placeholder="University or Company" autocomplete="organization"></label>
+    <label>Email<input class="in" type="email" name="email" placeholder="jane@university.edu" autocomplete="email"></label>
+    <label>Purpose (optional)<textarea class="in" name="purpose" rows="3" placeholder="What would you use it for?"></textarea></label>
+    <input class="ms-trap" type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
+    <p class="ms-ok" role="status" hidden>Sent. Thanks, I will get back to you soon.</p>
+    <p class="ms-err" role="alert" hidden></p>
+    <p class="ms-hint">Fill in Name, Affiliation and a valid Email to send.</p>
+    <div class="ms-actions">
+      <button type="button" class="rt-btn out ms-copy" hidden>Copy Details</button>
+      <button type="submit" class="rt-btn out ms-send" disabled>Send Request</button>
+    </div>
+  </form>
+</template>
 
-<script src="js/nav.js"></script>
-<script src="js/home.js"></script>
 </body>
 </html>

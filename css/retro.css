@@ -1,0 +1,221 @@
+/* Retro computer portfolio. Palette: teal #007B7B, gray #BDBDBD, navy #00007B, beige #CFC8B6. */
+
+html, body { margin: 0; height: 100%; }
+body {
+  background: #3B4A45;
+  font-family: VT323, monospace;
+  font-size: 20px;
+  line-height: 1.15;
+  color: #000;
+}
+a { color: #00007B; }
+a:hover { color: #7B0000; }
+button { font-family: inherit; }
+.sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+/* Bevels */
+.out { box-shadow: inset -1px -1px #000, inset 1px 1px #fff, inset -2px -2px #7B7B7B, inset 2px 2px #DEDEDE; }
+.in { box-shadow: inset -1px -1px #fff, inset 1px 1px #7B7B7B, inset -2px -2px #DEDEDE, inset 2px 2px #000; }
+.wall { background-color: #007B7B; background-image: radial-gradient(#FFFFFF33 1.5px, transparent 2px); background-size: 40px 40px; }
+
+:focus-visible { outline: 2px dotted #000; outline-offset: -4px; }
+.wall :focus-visible, .glow:focus-visible { outline-color: #fff; outline-offset: 0; }
+.win-bar :focus-visible { outline-offset: -3px; }
+
+/* ---------- Desk scene ---------- */
+#stage { position: fixed; inset: 0; overflow: hidden; }
+/* #cam is the world (design units = scene SVG units). scene.js sets --cam-rest and --cam-zoom from the viewport. */
+#fit { position: absolute; inset: 0; }
+#scene { position: absolute; inset: 0; user-select: none; }
+#cam {
+  position: absolute; left: 0; top: 0; width: 0; height: 0; transform-origin: 0 0;
+  transform: var(--cam-rest, none);
+  transition: transform 1s steps(10);
+}
+.zoomed #cam { transform: var(--cam-zoom, none); }
+.no-anim #cam { transition: none; }
+#cam > svg { position: absolute; left: 0; top: 0; overflow: visible; }
+
+.puff { position: absolute; background: #D8D8D0; }
+.p1 { left: 568px; top: 474px; width: 20px; height: 20px; box-shadow: 9px -9px #D8D8D0, -9px -6px #D8D8D0; animation: puff 3.2s steps(7) infinite; }
+.p2 { left: 589px; top: 484px; width: 18px; height: 18px; box-shadow: 7px -7px #D8D8D0; animation: puff 3.2s steps(7) 1.6s infinite; }
+@keyframes puff {
+  0% { transform: translateY(0) scale(.5); opacity: 0; }
+  25% { opacity: .85; }
+  100% { transform: translateY(-70px) scale(1.4); opacity: 0; }
+}
+@keyframes glow { 0%, 100% { box-shadow: 0 0 0 3px #FFD86B; } 50% { box-shadow: 0 0 0 7px #FFD86B; } }
+.glow { animation: glow 1.4s steps(2) infinite; }
+
+#pc-hit { position: absolute; left: 660px; top: 240px; width: 324px; height: 240px; background: transparent; border: none; cursor: pointer; padding: 0; }
+#pc-label { position: absolute; left: 818px; top: 190px; background: #FFD86B; color: #16181A; padding: 6px 14px; font-size: 24px; white-space: nowrap; }
+.zoomed #pc-hit, .zoomed #pc-label { display: none; }
+
+#back-btn {
+  display: none; position: fixed; left: 12px; top: 12px; z-index: 2000; min-height: 44px; padding: 0 14px;
+  border: 2px solid #16181A; background: #FFD86B; color: #16181A; font-size: 21px; cursor: pointer;
+}
+.zoomed #back-btn { display: block; }
+
+/* Monitor */
+#monitor { position: absolute; left: 660px; top: 240px; width: 324px; height: 240px; background: #CFC8B6; box-shadow: inset -3px -3px #8E8775, inset 3px 3px #EFE9DA; }
+#screen { position: absolute; left: 32px; top: 18px; width: 260px; height: 199px; background: #000; overflow: hidden; }
+#power-line {
+  position: absolute; left: 0; top: 99px; z-index: 2; width: 260px; height: 1px; background: #E8FFF4;
+  opacity: 0; transform: scaleX(0); transition: transform .16s steps(4);
+}
+.is-line #power-line { opacity: 1; transform: scaleX(1); }
+#desktop {
+  position: absolute; left: 3px; top: 3px; width: 742px; height: 563px; overflow: hidden; border-radius: 14px;
+  transform-origin: 0 0; transform: scale(0.341);
+  clip-path: inset(0 0 0 0); transition: clip-path .3s steps(6);
+}
+.is-closed #desktop { clip-path: inset(50% 0 50% 0); }
+.no-anim #desktop, .no-anim #power-line { transition: none; }
+
+#chin { position: absolute; left: 35px; right: 35px; bottom: 4px; height: 17px; display: flex; align-items: center; justify-content: space-between; }
+#chin .vent { width: 64px; height: 4px; background: #26282A; }
+#chin .pwr-wrap { display: flex; align-items: center; gap: 5px; }
+#led { width: 4px; height: 4px; background: #3FD06A; }
+.is-off #led { background: #4A4A40; }
+#pwr { width: 20px; height: 15px; background: #BDB6A4; border: none; cursor: pointer; padding: 0; font-size: 6px; }
+
+/* Retro cursors: inside the CRT screen only. Hotspots: arrow tip 1,1; hand fingertip 7,1; move centre 10,10. */
+#screen, #screen * { cursor: url(../images/cursors/arrow.png) 1 1, default; }
+#screen a, #screen button, #screen .desk-icon, #screen .rt-doc, #screen .task, #screen summary { cursor: url(../images/cursors/hand.png) 7 1, pointer; }
+#screen button:disabled { cursor: url(../images/cursors/arrow.png) 1 1, default; }
+#screen .win-bar { cursor: url(../images/cursors/move.png) 10 10, move; }
+#screen .win-bar button { cursor: url(../images/cursors/hand.png) 7 1, pointer; }
+#screen input:not([type=checkbox]):not([type=radio]), #screen textarea { cursor: text; }
+
+/* ---------- Desktop contents (design units: 742 x 563) ---------- */
+#desk-icons { position: absolute; left: 8px; top: 8px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 6px; width: 176px; }
+.desk-icon {
+  height: 76px; background: none; border: none; color: #fff; font-size: 18px; cursor: pointer;
+  display: flex; flex-direction: column; align-items: center; gap: 3px; padding: 0;
+}
+
+.win { position: absolute; background: #BDBDBD; padding: 4px; box-sizing: border-box; display: flex; flex-direction: column; }
+.win[hidden] { display: none; }
+.win-bar {
+  background: #7B7B7B; color: #fff; height: 28px; flex: 0 0 28px; display: flex; align-items: center; justify-content: space-between;
+  gap: 6px; padding: 0 4px 0 8px; font-family: 'Pixelify Sans', monospace; font-size: 16px; font-weight: 600; cursor: move; touch-action: none;
+}
+.win.active .win-bar { background: #00007B; }
+.win-title { min-width: 0; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
+.win-btns { display: flex; gap: 3px; flex: 0 0 auto; }
+.win-btns button { width: 24px; height: 22px; background: #BDBDBD; border: none; color: #000; cursor: pointer; font-size: 18px; line-height: 1; padding: 0; }
+.win-body { flex: 1 1 auto; margin-top: 4px; background: #fff; padding: 12px; overflow: auto; overflow-wrap: break-word; user-select: text; }
+
+#menu { position: absolute; left: 4px; bottom: 38px; z-index: 900; width: 190px; background: #BDBDBD; padding: 4px; display: flex; flex-direction: column; }
+#menu[hidden] { display: none; }
+#menu button { min-height: 32px; text-align: left; background: none; border: none; font-size: 20px; cursor: pointer; padding: 2px 8px; }
+#menu button:hover { background: #00007B; color: #fff; }
+
+#taskbar {
+  position: absolute; left: 0; right: 0; bottom: 0; z-index: 950; height: 36px; background: #BDBDBD;
+  display: flex; align-items: center; gap: 4px; padding: 3px 4px; box-sizing: border-box;
+}
+#menu-btn { flex: 0 0 auto; height: 28px; background: #BDBDBD; border: none; font-family: 'Pixelify Sans', monospace; font-size: 15px; font-weight: 700; white-space: nowrap; cursor: pointer; padding: 0 10px; }
+#tasks { flex: 1 1 auto; min-width: 0; display: flex; gap: 4px; overflow: hidden; }
+.task { flex: 0 1 128px; min-width: 0; height: 28px; background: #BDBDBD; border: none; font-size: 18px; cursor: pointer; padding: 0 8px; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; text-align: left; }
+#clock { flex: 0 0 auto; height: 28px; display: flex; align-items: center; padding: 0 10px; font-size: 18px; white-space: nowrap; }
+#scanlines { position: absolute; inset: 0; z-index: 1000; pointer-events: none; background: repeating-linear-gradient(rgba(0,0,0,0.07) 0 1px, transparent 1px 3px); }
+
+/* ---------- Window content helpers (Phase 2 uses these in index.html templates) ---------- */
+.rt-h1 { font-family: 'Pixelify Sans', monospace; font-size: 26px; font-weight: 700; margin: 0 0 6px; }
+.rt-h2 { font-family: 'Pixelify Sans', monospace; font-size: 20px; font-weight: 700; margin: 0; }
+.rt-gap { margin-bottom: 12px; }
+.rt-note { color: #00007B; }
+.rt-grid-2 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+.rt-grid-3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; }
+.rt-photo { display: block; width: 100%; aspect-ratio: 16 / 9; object-fit: cover; }
+.rt-btn { display: inline-block; background: #BDBDBD; color: #000; border: none; padding: 8px 14px; font-size: 20px; text-decoration: none; text-align: center; cursor: pointer; }
+.rt-folder { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; }
+.rt-doc {
+  background: none; border: none; font-size: 18px; cursor: pointer; display: flex; flex-direction: column; align-items: center;
+  gap: 3px; padding: 4px; min-height: 76px; overflow-wrap: anywhere;
+}
+
+/* Content blocks (Phase 2) */
+.win-body p, #ph-body p { margin: 0 0 8px; }
+.win-body ul, #ph-body ul, .win-body ol, #ph-body ol { margin: 0 0 8px; padding-left: 22px; }
+.win-body li, #ph-body li { margin-bottom: 4px; }
+.rt-sec { margin: 14px 0 4px; }
+.rt-profile { display: flex; gap: 12px; margin-bottom: 10px; }
+.rt-profile > div { min-width: 0; }
+.rt-portrait { flex: 0 0 auto; width: 124px; height: 124px; object-fit: cover; display: block; }
+.rt-fig { margin: 0 0 12px; }
+.rt-fig img, .rt-fig svg { display: block; width: 100%; height: auto; }
+.rt-fig figcaption { color: #555; font-size: 18px; margin-top: 2px; }
+.rt-kv { display: grid; grid-template-columns: 150px minmax(0, 1fr); gap: 8px 12px; }
+.rt-links { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 12px; }
+.rt-links .rt-btn { min-height: 44px; box-sizing: border-box; display: inline-flex; align-items: center; justify-content: center; }
+.rt-tools { color: #555; margin: 10px 0 0; }
+.rt-pubs li { margin-bottom: 12px; }
+.rt-table-wrap { overflow-x: auto; margin-bottom: 10px; }
+.rt-table { border-collapse: collapse; width: 100%; }
+.rt-table th, .rt-table td { border: 1px solid #7B7B7B; padding: 2px 6px; text-align: left; }
+.rt-table th { background: #BDBDBD; }
+.rt-chart { display: block; width: 100%; height: 120px; margin-bottom: 12px; background: #E8E8E8; }
+.rt-resume { display: flex; flex-direction: column; gap: 10px; height: 100%; }
+.rt-pdf { flex: 1 1 auto; min-height: 200px; width: 100%; border: 0; background: #E8E8E8; box-sizing: border-box; }
+.rt-resume-phone { display: none; }
+.rt-resume .rt-btn { min-height: 44px; box-sizing: border-box; display: inline-flex; align-items: center; justify-content: center; }
+
+/* Manuscript dialog */
+.ms-form { display: flex; flex-direction: column; gap: 8px; }
+.ms-form [hidden] { display: none; }
+.ms-form label { display: block; }
+.ms-form input[type="text"], .ms-form input[type="email"], .ms-form textarea {
+  display: block; width: 100%; box-sizing: border-box; border: none; padding: 6px; font: inherit; background: #fff; margin-top: 2px;
+}
+.ms-form textarea { resize: vertical; }
+.ms-form .ms-trap { position: absolute; left: -9999px; width: 1px; height: 1px; opacity: 0; }
+.ms-ok, .ms-err { padding: 6px 8px; margin: 0; }
+.ms-ok { background: #CFE8CF; }
+.ms-err { background: #F2CFCB; }
+.ms-hint { margin: 0; color: #555; }
+.ms-actions { display: flex; gap: 8px; justify-content: flex-end; }
+.ms-actions .rt-btn { min-height: 44px; box-sizing: border-box; }
+.ms-actions .rt-btn:disabled { color: #7B7B7B; cursor: default; }
+
+/* ---------- Phone shell ---------- */
+#phone { display: none; }
+#ph-win[hidden] { display: none; }
+
+@media (max-width: 760px), (pointer: coarse) {
+  body { background: #007B7B; font-size: 21px; }
+  #stage, #back-btn { display: none; }
+  #phone { display: block; }
+  body.ph-open { overflow: hidden; }
+  .ph-wall { min-height: 100vh; box-sizing: border-box; padding-bottom: 24px; color: #fff; }
+  .ph-wall h1 { margin: 0; padding: 24px 18px 0; font-family: 'Pixelify Sans', monospace; font-size: 28px; font-weight: 700; }
+  .ph-wall p { margin: 0; padding: 6px 18px 22px; font-size: 22px; }
+  .ph-grid { list-style: none; margin: 0; padding: 0 18px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
+  .ph-tile {
+    height: 96px; box-sizing: border-box; padding: 6px; background: #BDBDBD; color: #000; text-decoration: none;
+    display: flex; align-items: center; justify-content: center; text-align: center;
+  }
+  #ph-win { position: fixed; inset: 0; z-index: 10; background: #BDBDBD; padding: 4px; box-sizing: border-box; display: flex; flex-direction: column; }
+  .ph-bar {
+    background: #00007B; color: #fff; min-height: 48px; display: flex; align-items: center; justify-content: space-between;
+    gap: 6px; padding: 0 4px 0 10px; font-family: 'Pixelify Sans', monospace; font-size: 18px; font-weight: 600;
+  }
+  .ph-bar span { min-width: 0; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
+  #ph-close { flex: 0 0 auto; width: 48px; height: 44px; background: #BDBDBD; color: #000; border: none; font-size: 22px; cursor: pointer; padding: 0; }
+  #ph-body { flex: 1 1 auto; margin-top: 4px; background: #fff; padding: 16px; overflow: auto; overflow-wrap: anywhere; }
+  .rt-grid-3 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .rt-kv { grid-template-columns: 110px minmax(0, 1fr); }
+  .rt-profile { flex-direction: column; }
+  .rt-pdf-desktop { display: none; }
+  .rt-resume-phone { display: block; }
+  .rt-resume { height: auto; }
+  #ph-body .rt-btn { min-height: 44px; }
+}
+
+/* ---------- Reduced motion ---------- */
+@media (prefers-reduced-motion: reduce) {
+  .glow, .p1, .p2 { animation: none; }
+  #cam, #desktop, #power-line { transition: none; }
+}
