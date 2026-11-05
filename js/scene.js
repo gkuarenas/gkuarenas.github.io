@@ -1,7 +1,7 @@
 // Desk scene: scale-to-fit, camera zoom, back to desk, power. Shared namespace: window.Retro.
 (function () {
   var R = window.Retro = window.Retro || {};
-  R.phoneMQ = window.matchMedia('(max-width: 760px), (pointer: coarse)');
+  R.phoneMQ = window.matchMedia('(max-width: 760px), (max-height: 500px)');
   var reduced = window.matchMedia('(prefers-reduced-motion: reduce)');
 
   var root = document.documentElement;
@@ -15,14 +15,16 @@
   var VIEW = { x: 60, y: 0, w: 1400, h: 788 };
   var MON = { cx: 822, cy: 360, w: 324, h: 240 };
   var MARGIN = 30;
+  // Phone zoom: the 260x199 screen covers the whole viewport.
+  var SCR = { cx: 822, cy: 357.5, w: 260, h: 199 };
 
   function layout() {
-    if (R.phoneMQ.matches) return;
     var vw = window.innerWidth, vh = window.innerHeight;
     var s = Math.min(vw / VIEW.w, vh / VIEW.h);
     var rest = 'translate(' + ((vw - VIEW.w * s) / 2 - VIEW.x * s) + 'px,' + ((vh - VIEW.h * s) / 2 - VIEW.y * s) + 'px) scale(' + s + ')';
-    var k = Math.min((vw - 2 * MARGIN) / MON.w, (vh - 2 * MARGIN) / MON.h);
-    var zoom = 'translate(' + (vw / 2 - MON.cx * k) + 'px,' + (vh / 2 - MON.cy * k) + 'px) scale(' + k + ')';
+    var phone = R.phoneMQ.matches, T = phone ? SCR : MON;
+    var k = phone ? Math.max(vw / SCR.w, vh / SCR.h) : Math.min((vw - 2 * MARGIN) / MON.w, (vh - 2 * MARGIN) / MON.h);
+    var zoom = 'translate(' + (vw / 2 - T.cx * k) + 'px,' + (vh / 2 - T.cy * k) + 'px) scale(' + k + ')';
     root.classList.add('no-anim'); // a resize must not play the 10-step zoom
     root.style.setProperty('--cam-rest', rest);
     root.style.setProperty('--cam-zoom', zoom);
@@ -47,7 +49,7 @@
     monitor.inert = true;
   };
   document.getElementById('pc-hit').addEventListener('click', function () {
-    R.zoom();
+    if (!R.phoneMQ.matches) R.zoom(); // phone.js handles the tap on phones
   });
   document.getElementById('back-btn').addEventListener('click', R.back);
   document.addEventListener('keydown', function (e) {

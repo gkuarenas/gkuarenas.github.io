@@ -184,20 +184,66 @@ button { font-family: inherit; }
 #phone { display: none; }
 #ph-win[hidden] { display: none; }
 
-@media (max-width: 760px), (pointer: coarse) {
-  body { background: #007B7B; font-size: 21px; }
-  #stage, #back-btn { display: none; }
+/* Phone: narrow, or short (a phone on its side). phone.js adds .landscape / .portrait / .short to <html>. */
+@media (max-width: 760px), (max-height: 500px) {
+  body { font-size: 21px; -webkit-text-size-adjust: 100%; -webkit-tap-highlight-color: transparent; }
+  button { touch-action: manipulation; }
+  #stage { display: none; }
+  .landscape #stage { display: block; }
+  #back-btn, .zoomed #back-btn { display: none; }
+  #pc-label { left: 744px; top: 150px; padding: 8px 20px; font-size: 44px; pointer-events: none; }
   #phone { display: block; }
+  #phone [hidden] { display: none !important; }
   body.ph-open { overflow: hidden; }
-  .ph-wall { min-height: 100vh; box-sizing: border-box; padding-bottom: 24px; color: #fff; }
-  .ph-wall h1 { margin: 0; padding: 24px 18px 0; font-family: 'Pixelify Sans', monospace; font-size: 28px; font-weight: 700; }
-  .ph-wall p { margin: 0; padding: 6px 18px 22px; font-size: 22px; }
-  .ph-grid { list-style: none; margin: 0; padding: 0 18px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
-  .ph-tile {
-    height: 96px; box-sizing: border-box; padding: 6px; background: #BDBDBD; color: #000; text-decoration: none;
-    display: flex; align-items: center; justify-content: center; text-align: center;
+
+  /* Phone desktop */
+  #ph-desk { position: fixed; inset: 0; z-index: 10; background: #000; overflow: hidden; }
+  #ph-in { position: absolute; inset: 0; clip-path: inset(0 0 0 0); transition: clip-path .3s steps(6); }
+  #ph-desk.closing #ph-in { clip-path: inset(50% 0 50% 0); }
+  #ph-line { position: absolute; left: 0; right: 0; top: 50%; z-index: 60; height: 2px; background: #E8FFF4; opacity: 0; transform: scaleX(0); transition: transform .16s steps(4); }
+  #ph-desk.lined #ph-line { opacity: 1; transform: scaleX(1); }
+  #ph-scan { position: absolute; inset: 0; z-index: 50; pointer-events: none; background: repeating-linear-gradient(rgba(0,0,0,.07) 0 1px, transparent 1px 3px); }
+  #ph-head { padding: 24px 18px 20px; color: #fff; }
+  .ph-name { margin: 0; font-family: 'Pixelify Sans', monospace; font-size: 28px; font-weight: 700; }
+  .ph-role { margin: 4px 0 0; font-size: 22px; }
+  #ph-icons { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); grid-auto-rows: 118px; gap: 6px; padding: 0 10px; }
+  .ph-ic {
+    color: #fff; text-decoration: none; text-align: center; font-size: 20px; line-height: 1.05; padding: 2px; min-width: 44px; min-height: 44px;
+    display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px;
   }
-  #ph-win { position: fixed; inset: 0; z-index: 10; background: #BDBDBD; padding: 4px; box-sizing: border-box; display: flex; flex-direction: column; }
+  .ph-ic svg { width: 56px; height: 56px; flex: 0 0 auto; }
+  #ph-taskbar {
+    position: absolute; left: 0; right: 0; bottom: 0; z-index: 20; height: 56px; box-sizing: content-box;
+    padding-bottom: env(safe-area-inset-bottom); background: #BDBDBD; display: flex; align-items: center; gap: 6px;
+  }
+  .tb { height: 44px; background: #BDBDBD; border: none; padding: 0 12px; font-family: 'Pixelify Sans', monospace; font-size: 17px; font-weight: 700; white-space: nowrap; margin-left: 6px; }
+  .tb + .tb { margin-left: 0; }
+  #ph-clock { margin-left: auto; margin-right: 6px; height: 44px; display: flex; align-items: center; padding: 0 12px; }
+  #ph-menu { position: absolute; left: 6px; bottom: calc(60px + env(safe-area-inset-bottom)); z-index: 40; width: 230px; max-height: calc(100% - 72px); overflow: auto; background: #BDBDBD; padding: 4px; box-sizing: border-box; }
+  #ph-menu a, #ph-menu button {
+    display: flex; align-items: center; box-sizing: border-box; width: 100%; min-height: 44px; text-align: left;
+    background: none; border: none; color: #000; text-decoration: none; font-size: 21px; padding: 2px 10px;
+  }
+  #ph-menu .sep { height: 2px; margin: 4px 2px; background: #7B7B7B; }
+  #ph-hint { position: absolute; left: 18px; right: 18px; bottom: calc(72px + env(safe-area-inset-bottom)); z-index: 30; background: #BDBDBD; padding: 4px; }
+  .ph-hbar { background: #00007B; color: #fff; height: 30px; display: flex; align-items: center; padding: 0 8px; font-family: 'Pixelify Sans', monospace; font-size: 16px; font-weight: 600; }
+  .ph-hrow { display: flex; align-items: center; gap: 10px; padding: 10px 8px 6px; }
+  .ph-hrow p { margin: 0; flex: 1 1 auto; }
+  #ph-hint-ok { min-width: 64px; height: 44px; background: #BDBDBD; border: none; font-size: 21px; }
+
+  .landscape #ph-in { display: flex; gap: 18px; padding: 16px max(16px, env(safe-area-inset-right)) calc(66px + env(safe-area-inset-bottom)) max(16px, env(safe-area-inset-left)); box-sizing: border-box; }
+  .landscape #ph-head { flex: 0 0 200px; padding: 0; }
+  .landscape #ph-icons { flex: 1 1 auto; grid-template-columns: repeat(4, minmax(0, 1fr)); grid-auto-rows: 1fr; padding: 0; }
+  .landscape #ph-menu { left: max(6px, env(safe-area-inset-left)); width: 400px; display: grid; grid-template-columns: 1fr 1fr; }
+  .landscape #ph-menu .sep, .landscape #ph-shutdown { grid-column: 1 / -1; }
+  .landscape .tb:first-child { margin-left: max(6px, env(safe-area-inset-left)); }
+  .landscape #ph-clock { margin-right: max(6px, env(safe-area-inset-right)); }
+  .landscape.short .ph-ic svg { width: 44px; height: 44px; }
+  .landscape.short .ph-ic { font-size: 18px; }
+
+  /* Full-screen window */
+  #ph-win { position: fixed; inset: 0; z-index: 30; background: #BDBDBD; padding: 4px; box-sizing: border-box; display: flex; flex-direction: column; }
+  .landscape #ph-win { padding-left: max(4px, env(safe-area-inset-left)); padding-right: max(4px, env(safe-area-inset-right)); }
   .ph-bar {
     background: #00007B; color: #fff; min-height: 48px; display: flex; align-items: center; justify-content: space-between;
     gap: 6px; padding: 0 4px 0 10px; font-family: 'Pixelify Sans', monospace; font-size: 18px; font-weight: 600;
@@ -207,7 +253,7 @@ button { font-family: inherit; }
   #ph-body { flex: 1 1 auto; margin-top: 4px; background: #fff; padding: 16px; overflow: auto; overflow-wrap: anywhere; }
   .rt-grid-3 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .rt-kv { grid-template-columns: 110px minmax(0, 1fr); }
-  .rt-profile { flex-direction: column; }
+  .portrait .rt-profile { flex-direction: column; }
   .rt-pdf-desktop { display: none; }
   .rt-resume-phone { display: block; }
   .rt-resume { height: auto; }
@@ -217,5 +263,5 @@ button { font-family: inherit; }
 /* ---------- Reduced motion ---------- */
 @media (prefers-reduced-motion: reduce) {
   .glow, .p1, .p2 { animation: none; }
-  #cam, #desktop, #power-line { transition: none; }
+  #cam, #desktop, #power-line, #ph-in, #ph-line { transition: none; }
 }

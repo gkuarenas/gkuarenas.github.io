@@ -138,6 +138,7 @@
     phBody.scrollTop = 0;
     panel.hidden = false;
     document.body.classList.add('ph-open');
+    if (R.phone) R.phone.enter();
     if (location.hash !== '#' + id && tpl.dataset.hash !== 'none') location.hash = id;
     document.getElementById('ph-close').focus();
     return true;

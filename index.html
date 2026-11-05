@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Guillaume Arenas | Data Science and ML Engineering Portfolio</title>
 <meta name="description" content="Guillaume Arenas, BS/MS Manufacturing Engineering student at De La Salle University. Open to Data Science and ML Engineering internships from January 2027. ML on real physical systems.">
 <meta property="og:type" content="website">
@@ -19,6 +19,7 @@
 <link rel="stylesheet" href="css/retro.css">
 <script src="js/scene.js" defer></script>
 <script src="js/windows.js" defer></script>
+<script src="js/phone.js" defer></script>
 <script src="js/router.js" defer></script>
 <script src="js/config.js" defer></script>
 <script src="js/manuscript-modal.js" defer></script>
@@ -141,21 +142,28 @@
 </div>
 <button type="button" id="back-btn">Back to desk</button>
 
-<!-- ============ PHONE SHELL (760px or narrower, or coarse pointer) ============ -->
+<!-- ============ PHONE SHELL (760px or narrower, or 500px or shorter) ============ -->
 <main id="phone">
-  <div class="ph-wall wall">
-    <h1>GUILLAUME ARENAS</h1>
-    <p>Data Science + ML intern, Jan 2027</p>
-    <ul class="ph-grid">
-      <li><a class="ph-tile" href="#who-am-i" data-open="who-am-i">Who Am I</a></li>
-      <li><a class="ph-tile" href="#experiences" data-open="experiences">Experiences</a></li>
-      <li><a class="ph-tile" href="#projects" data-open="projects">Projects</a></li>
-      <li><a class="ph-tile" href="#teep-honors" data-open="teep-honors">TEEP &amp; Honors</a></li>
-      <li><a class="ph-tile" href="#publications" data-open="publications">Publications</a></li>
-      <li><a class="ph-tile" href="#system-specs" data-open="system-specs">System Specs</a></li>
-      <li><a class="ph-tile" href="#resume" data-open="resume">Resume.pdf</a></li>
-      <li><a class="ph-tile" href="#contact" data-open="contact">Contact</a></li>
-    </ul>
+  <div id="ph-desk" hidden>
+    <div id="ph-in" class="wall">
+      <div id="ph-head"><h1 class="ph-name">GUILLAUME ARENAS</h1><p class="ph-role">Data Science + ML intern, Jan 2027</p></div>
+      <nav id="ph-icons" aria-label="Programs"></nav>
+      <div id="ph-hint" class="out" role="dialog" aria-label="Tip" hidden>
+        <div class="ph-hbar">Tip</div>
+        <div class="ph-hrow"><p>Rotate your phone to see the full room.</p><button type="button" id="ph-hint-ok" class="out">OK</button></div>
+      </div>
+      <div id="ph-menu" class="out" hidden>
+        <div class="sep land-only" hidden></div>
+        <button type="button" id="ph-shutdown" class="land-only" hidden>Shut down</button>
+      </div>
+      <div id="ph-taskbar" class="out">
+        <button type="button" id="ph-menu-btn" class="tb out" aria-expanded="false" aria-controls="ph-menu">G.A. Menu</button>
+        <button type="button" id="ph-back" class="tb out land-only" hidden>Back to desk</button>
+        <span id="ph-clock" class="in"></span>
+      </div>
+      <div id="ph-scan" aria-hidden="true"></div>
+    </div>
+    <div id="ph-line" aria-hidden="true"></div>
   </div>
   <section id="ph-win" class="out" role="dialog" aria-modal="true" aria-labelledby="ph-title" hidden>
     <div class="ph-bar"><span id="ph-title"></span><button type="button" id="ph-close" class="out" aria-label="Close and go back">X</button></div>
