@@ -48,7 +48,6 @@
   };
   document.getElementById('pc-hit').addEventListener('click', function () {
     R.zoom();
-    if (!R.windows.count()) R.windows.open('who-am-i');
   });
   document.getElementById('back-btn').addEventListener('click', R.back);
   document.addEventListener('keydown', function (e) {
